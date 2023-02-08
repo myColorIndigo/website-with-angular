@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ConfigComponent } from './config/config.component';
+import { VersionService } from './config/version.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { ConfigComponent } from './config/config.component';
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [VersionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
