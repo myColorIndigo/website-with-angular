@@ -11,6 +11,16 @@ import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './header/nav/nav.component';
+import { MenuComponent } from './menu/menu.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { RouterModule } from '@angular/router';
+
+const routes = [
+  { path: '', component: MainComponent },
+  { path: 'sign-in', component: SignInComponent },
+  { path: 'registration', component: RegistrationComponent },
+]
 
 @NgModule({
   declarations: [
@@ -20,11 +30,15 @@ import { NavComponent } from './header/nav/nav.component';
     MainComponent,
     FooterComponent,
     NavComponent,
+    MenuComponent,
+    SignInComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [VersionService],
   bootstrap: [AppComponent]
