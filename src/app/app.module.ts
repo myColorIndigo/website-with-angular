@@ -15,11 +15,15 @@ import { MenuComponent } from './menu/menu.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { RouterModule } from '@angular/router';
+import { ProfileComponent } from './profile/profile.component';
+import { SomeUserComponent } from './profile/some-user/some-user.component';
 
 const routes = [
   { path: '', component: MainComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'registration', component: RegistrationComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'some-user', component: SomeUserComponent },
 ]
 
 @NgModule({
@@ -33,6 +37,8 @@ const routes = [
     MenuComponent,
     SignInComponent,
     RegistrationComponent,
+    ProfileComponent,
+    SomeUserComponent,
   ],
   imports: [
     BrowserModule,
