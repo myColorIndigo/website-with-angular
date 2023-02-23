@@ -11,7 +11,7 @@ export class VersionService {
   constructor(private _http: HttpClient) { }
 
   public getAll() {
-    return this._http.get('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/version');
+    return this._http.get('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/auth/logout');
   }
 
 }

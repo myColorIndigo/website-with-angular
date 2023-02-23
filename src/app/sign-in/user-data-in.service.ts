@@ -12,6 +12,6 @@ export class UserDataInService {
     postData(user: User){
           
         const body = {email: user.email, password: user.password};
-        return this._http.post('http://learn-golang.eu-central-1.elasticbeanstalk.com/', body); 
+        return this._http.post('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/auth/login', body).subscribe(); 
     }
 }
