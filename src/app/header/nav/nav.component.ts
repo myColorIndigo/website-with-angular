@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class NavComponent {
   public isShown = false;
+  public userIconNav = false;
 }
