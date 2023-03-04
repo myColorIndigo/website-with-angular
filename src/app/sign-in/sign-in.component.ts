@@ -9,11 +9,13 @@ import {NgForm} from '@angular/forms';
 })
 export class SignInComponent {
   
+  public statusToken: any;
+
   constructor (private _data: UserDataInService) {}
 
   onSubmit(f: NgForm) {
     console.log(f.value);  // { first: '', last: '' }
     console.log(f.valid);  // false
-    this._data.postData(f.value);
+    this._data.postData(f.value).subscribe( statusToken => this.statusToken = statusToken);
   }
 }
