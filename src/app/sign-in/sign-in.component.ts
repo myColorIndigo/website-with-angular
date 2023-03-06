@@ -10,6 +10,7 @@ import {NgForm} from '@angular/forms';
 export class SignInComponent {
   
   public statusToken: any;
+  public tokenDataProfile: any;
 
   constructor (private _data: UserDataInService) {}
 
@@ -17,5 +18,16 @@ export class SignInComponent {
     console.log(f.value);  // { first: '', last: '' }
     console.log(f.valid);  // false
     this._data.postData(f.value).subscribe( statusToken => this.statusToken = statusToken);
+    setTimeout(() => {
+      this.requestProfileToken();
+    }, 5000); 
+  }
+
+  requestProfileToken() {
+    new Promise ((resolve) => {
+      console.log(this.statusToken?.token)
+      resolve(this._data.postDataProfile(this.statusToken?.token).subscribe( tokenDataProfile => this.tokenDataProfile = tokenDataProfile));
+      
+    });
   }
 }
