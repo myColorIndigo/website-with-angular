@@ -19,6 +19,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { SomeUserComponent } from './profile/some-user/some-user.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 const routes = [
   { path: '', component: MainComponent },
@@ -26,6 +27,7 @@ const routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'some-user', component: SomeUserComponent },
+  { path: 'admin-page', component: AdminPageComponent },
 ]
 
 @NgModule({
@@ -41,6 +43,7 @@ const routes = [
     RegistrationComponent,
     ProfileComponent,
     SomeUserComponent,
+    AdminPageComponent,
   ],
   imports: [
     BrowserModule,
