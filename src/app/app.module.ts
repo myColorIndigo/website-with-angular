@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './header/nav/nav.component';
 import { MenuComponent } from './menu/menu.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { UserDataInService } from './sign-in/user-data-in.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
@@ -31,7 +32,7 @@ const routes = [
   { path: 'admin-page', component: AdminPageComponent },
   { path: 'nav-menu', 
     resolve: {
-      user: UserResolveService
+      tokenData: UserResolveService
     },
     component: NavComponent },
 ]
@@ -58,7 +59,7 @@ const routes = [
     AppRoutingModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [VersionService, UserResolveService],
+  providers: [VersionService, UserDataInService, UserResolveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
