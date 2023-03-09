@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserDataInService } from './user-data-in.service';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,25 +9,17 @@ import {NgForm} from '@angular/forms';
 })
 export class SignInComponent {
   
-  public statusToken: any;
-  public tokenDataProfile: any;
+  
 
   constructor (private _data: UserDataInService) {}
 
   onSubmit(f: NgForm) {
     console.log(f.value);  // { first: '', last: '' }
     console.log(f.valid);  // false
-    this._data.postData(f.value).subscribe( statusToken => this.statusToken = statusToken);
+    this._data.postData(f.value);
     setTimeout(() => {
-      this.requestProfileToken();
+      this._data.requestProfileToken();
     }, 5000); 
-  }
-
-  requestProfileToken() {
-    new Promise ((resolve) => {
-      console.log(this.statusToken?.token)
-      resolve(this._data.postDataProfile(this.statusToken?.token).subscribe( tokenDataProfile => this.tokenDataProfile = tokenDataProfile));
-      
-    });
+    // переделать промис
   }
 }
