@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { SomeUserComponent } from './profile/some-user/some-user.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { UserResolveService } from './sign-in/user-resolve.service';
 
 const routes = [
   { path: '', component: MainComponent },
@@ -28,6 +29,11 @@ const routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'some-user', component: SomeUserComponent },
   { path: 'admin-page', component: AdminPageComponent },
+  { path: 'nav-menu', 
+    resolve: {
+      user: UserResolveService
+    },
+    component: NavComponent },
 ]
 
 @NgModule({
@@ -52,7 +58,7 @@ const routes = [
     AppRoutingModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [VersionService],
+  providers: [VersionService, UserResolveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
