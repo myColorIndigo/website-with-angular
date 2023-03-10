@@ -8,20 +8,23 @@ import { User } from '../user';
 export class UserDataInService {
     
     public statusToken: any;
-    public tokenDataProfile: any = {name:'null'}; // передает пустое значение профиля в компоненты, до изменения от сервера
+    public tokenDataProfile: any;
   
     constructor(private _http: HttpClient){ }
  
-    postData(user: User){
-          
+    async postData(user: User){
+      
       const body = {email: user.email, password: user.password};
-      return this._http.post('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/auth/login', body).subscribe( statusToken => this.statusToken = statusToken); 
-    }
-    
-    requestProfileToken() {
-      const tokenA = 'Bearer ' + this.statusToken?.token;
-      console.log(tokenA);
-      return this._http.get('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/users/me', { headers: new HttpHeaders({ 'Authorization': tokenA })}).subscribe( tokenDataProfile => this.tokenDataProfile = tokenDataProfile);
+
+      let promise = new Promise((resolve) => {
+        this._http.post('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/auth/login', body).subscribe( statusToken => resolve(this.statusToken = statusToken));
+      });
+
+      console.log(await promise);
+
+      const tokenUser = 'Bearer ' + this.statusToken?.token;
+
+      return this._http.get('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/users/me', { headers: new HttpHeaders({ 'Authorization': tokenUser })}).subscribe( tokenDataProfile => this.tokenDataProfile = tokenDataProfile);
     };
     
 }

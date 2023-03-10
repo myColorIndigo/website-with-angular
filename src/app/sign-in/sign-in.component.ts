@@ -8,8 +8,6 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent {
-  
-  
 
   constructor (private _data: UserDataInService) {}
 
@@ -17,9 +15,5 @@ export class SignInComponent {
     console.log(f.value);  // { first: '', last: '' }
     console.log(f.valid);  // false
     this._data.postData(f.value);
-    setTimeout(() => {
-      this._data.requestProfileToken();
-    }, 5000); 
-    // переделать промис
   }
 }
