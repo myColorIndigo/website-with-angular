@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { UserResolveService } from 'src/app/sign-in/user-resolve.service';
 
 @Component({
@@ -12,12 +10,9 @@ export class NavComponent implements OnInit {
   public isShown = false;
   public userIconNav = false;
 
-  constructor (private _token: ActivatedRoute) {
-    this._token.data.subscribe(data => console.log(data)); // An observable of the static and resolved data of this route.
-    //сделать нормальную передачу данных
-  }
+  constructor (private readonly resolveService: UserResolveService) { }
   
   ngOnInit() {
-    console.log(this._token.data.subscribe(data => console.log(data)));
+    this.resolveService.count$.subscribe((count: any) => console.log(count));
   }
 }

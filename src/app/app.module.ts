@@ -30,11 +30,7 @@ const routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'some-user', component: SomeUserComponent },
   { path: 'admin-page', component: AdminPageComponent },
-  { path: 'nav-menu', 
-    resolve: {
-      tokenData: UserResolveService
-    },
-    component: NavComponent },
+  { path: 'nav-menu', component: NavComponent },
 ]
 
 @NgModule({

@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
-import { SignInComponent } from './sign-in.component';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserResolveService implements Resolve<any> {
+export class UserResolveService {
 
-  constructor(private _token: SignInComponent) {}
+  public count$ = new Subject<unknown>();
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    return this._token.tokenDataProfile?.data.user.role;
-  }
-}
+  public changeCount(count: unknown) {
+    this.count$.next(count); 
+  };
+
+  constructor() {}
+
+} // Принять данные из сервиса юзер дата ин и направить их в нав компонент
