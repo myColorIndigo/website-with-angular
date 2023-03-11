@@ -6,9 +6,9 @@ import { Subject } from 'rxjs';
 })
 export class UserResolveService {
 
-  public count$ = new Subject<unknown>();
+  public count$ = new Subject<any>();
 
-  public changeCount(count: unknown) {
+  public changeCount(count: any) {
     this.count$.next(count); 
   };
 

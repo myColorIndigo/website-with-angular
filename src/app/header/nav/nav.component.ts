@@ -13,6 +13,13 @@ export class NavComponent implements OnInit {
   constructor (private readonly resolveService: UserResolveService) { }
   
   ngOnInit() {
-    this.resolveService.count$.subscribe((count: any) => console.log(count));
+    this.resolveService.count$.subscribe(
+      value => { 
+        if(value.data.user !== undefined) {
+          // Изменения при авторизации сюда
+          this.userIconNav = true;
+        } 
+      },
+    ); 
   }
 }
