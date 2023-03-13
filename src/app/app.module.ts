@@ -22,6 +22,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SomeUserComponent } from './profile/some-user/some-user.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { UserResolveService } from './sign-in/user-resolve.service';
+import { UserCardComponent } from './admin-page/user-card/user-card.component';
 
 const routes = [
   { path: '', component: MainComponent },
@@ -47,6 +48,7 @@ const routes = [
     ProfileComponent,
     SomeUserComponent,
     AdminPageComponent,
+    UserCardComponent,
   ],
   imports: [
     BrowserModule,
