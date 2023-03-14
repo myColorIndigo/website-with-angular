@@ -8,8 +8,8 @@ import { UserResolveService } from './user-resolve.service';
 })
 export class UserDataInService {
     
-  public statusToken: any;
-  public tokenDataProfile: any;
+  private statusToken: any;
+  private tokenDataProfile: any;
 
   constructor(private _http: HttpClient, private readonly userResolveService: UserResolveService){ }
 
@@ -31,7 +31,7 @@ export class UserDataInService {
 
     console.log(await promiseProfile);
 
-    return this.userResolveService.changeCount(await promiseProfile);
+    return this.userResolveService.takeDataProfile(await promiseProfile), this.userResolveService.tokenUser(await promiseToken);
      // передать данные в юзер резолв сервис
   };
 }
