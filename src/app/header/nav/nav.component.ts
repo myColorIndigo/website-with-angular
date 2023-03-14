@@ -14,12 +14,13 @@ export class NavComponent implements OnInit {
   constructor (private readonly resolveService: UserResolveService) { }
   
   ngOnInit() {
-    this.resolveService.count$.subscribe(
+    this.resolveService.userProfile$.subscribe(
       value => { 
         if(value.data.user !== undefined) {
           // Изменения при авторизации сюда
             if(value.data.user.role === 'admin') {
               this.usersPage = true;
+              console.log(value);
             }
           this.userIconNav = true;
         } 
