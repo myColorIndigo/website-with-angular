@@ -9,7 +9,6 @@ import { AdminUsersService } from './admin-users.service';
 })
 export class AdminPageComponent implements OnInit {
 
-  
   public statusToken: any;
   public tokenDataProfile: any;
 
@@ -26,7 +25,7 @@ export class AdminPageComponent implements OnInit {
 
   someF() {
     console.log('work!');
-    this._users.getUsers().subscribe( tokenDataProfile => this.users = tokenDataProfile);
+    this._users.getUsers().subscribe( tokenDataProfile => this.user = tokenDataProfile);
   }
 
   someTg() {
@@ -34,16 +33,11 @@ export class AdminPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._resolveService.userProfile$.subscribe(
-      value => {
-        if (value.data.user !== undefined) {
-          if (value.data.user.role === 'admin') {
-          }
-          console.log(value);
-        }
-      }
-    );
-    console.log(this.tokenDataProfile);
+    this._resolveService.userProfile$.subscribe((count) => this.log(count));
+  }
+
+  private log(data: any): void {
+    console.log(data);
   }
 
 }

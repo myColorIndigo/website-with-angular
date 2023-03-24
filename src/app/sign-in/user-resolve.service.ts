@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserResolveService {
 
-  public token$ = new Subject<any>(); // Данные токена
-  public userProfile$ = new Subject<any>(); // Данные профиля
+  public token$ = new ReplaySubject<any>(); // Данные токена
+  public userProfile$ = new ReplaySubject<any>(); // Данные профиля
   
-  public tokenUser(count: any) {
-    this.token$.next(count); 
+  public tokenUser(token: any) {
+    this.token$.next(token); 
   };
   
-  public takeDataProfile(count: any) {
-    this.userProfile$.next(count); 
+  public takeDataProfile(data: any) {
+    this.userProfile$.next(data); 
   };
   
   constructor() {}
