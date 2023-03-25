@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { UserResolveService } from '../sign-in/user-resolve.service';
+import { Component } from '@angular/core';
 import { AdminUsersService } from './admin-users.service';
 
 @Component({
@@ -7,37 +6,14 @@ import { AdminUsersService } from './admin-users.service';
   templateUrl: './admin-page.component.html',
   styleUrls: ['./admin-page.component.css']
 })
-export class AdminPageComponent implements OnInit {
+export class AdminPageComponent {
 
-  public statusToken: any;
-  public tokenDataProfile: any;
+  public users: any = [];
 
-  public user: any = {
-    name: 'Bob'
-  };
-  public users: any = [
-    {name: 'Bob'},
-    {name: 'Jopa'},
-    {name: 'Pica'},
-  ];
+  constructor(private _users: AdminUsersService) {}
 
-  constructor(private _users: AdminUsersService, private readonly _resolveService: UserResolveService) {}
-
-  someF() {
-    console.log('work!');
-    this._users.getUsers().subscribe( tokenDataProfile => this.user = tokenDataProfile);
-  }
-
-  someTg() {
-    this._users.ngOnInit();
-  }
-
-  ngOnInit() {
-    this._resolveService.userProfile$.subscribe((count) => this.log(count));
-  }
-
-  private log(data: any): void {
-    console.log(data);
+  showUsers() {
+    this._users.getUsers().subscribe(userData => this.users = userData.data.users); 
   }
 
 }
