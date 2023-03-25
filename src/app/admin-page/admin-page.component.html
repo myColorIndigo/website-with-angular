@@ -1,11 +1,11 @@
 <p>admin-page works!</p>
 
-<button (click)="someF()">Get users</button>
-<button (click)="someTg()">Get resolve</button>
-<button (click)="ngOnInit()">Get shit</button>
+<br>
+
+<button (click)="showUsers()">Get users</button>
+
+<br>
 
 <ul *ngFor="let user of users">
-    
-    <li><p>{{user}}</p></li>
+    <li><app-user-card [user]="user"></app-user-card></li>  
 </ul>
-<app-user-card [user]="user"></app-user-card>
