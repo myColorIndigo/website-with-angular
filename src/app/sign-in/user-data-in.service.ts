@@ -21,7 +21,7 @@ export class UserDataInService {
       this._http.post('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/auth/login', body).subscribe( statusToken => resolve(this.statusToken = statusToken));
     });
 
-    console.log(await promiseToken);
+    console.log(await promiseToken); // Прописать замену с await
 
     const tokenUser = 'Bearer ' + this.statusToken?.token;
 
@@ -29,7 +29,7 @@ export class UserDataInService {
       this._http.get('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/users/me', { headers: new HttpHeaders({ 'Authorization': tokenUser })}).subscribe( tokenDataProfile => resolve(this.tokenDataProfile = tokenDataProfile));
     });
 
-    console.log(await promiseProfile);
+    console.log(await promiseProfile); // Прописать замену с await
 
     return this.userResolveService.takeDataProfile(await promiseProfile), this.userResolveService.tokenUser(await promiseToken);
      // передать данные в юзер резолв сервис
