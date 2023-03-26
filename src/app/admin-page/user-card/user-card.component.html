@@ -1,2 +1,10 @@
-<p>{{user?.Name}}</p>
-<!-- Проработать стили в карточке и в компоненте страницы админа -->
+<div class="flex flex-col p-2 gap-1 rounded-md shadow-md shadow-indigo-300/80 text-sm sm:text-base">
+    <div class="flex flex-row flex-nowrap justify-around gap-1 border-b border-l-indigo-300">
+        <h3 class="font-medium">Name: {{user?.Name}}</h3>
+        <p>Role: {{user?.Role}}</p>
+    </div>
+    <div class="flex flex-col gap-1">
+        <p>ID: {{user?.ID}}</p>
+        <p>Email: {{user?.Email}}</p>
+    </div>
+</div> 
