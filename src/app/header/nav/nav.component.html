@@ -1,6 +1,6 @@
 <div class="ml-auto flex items-center bg-slate-100">
     <div class="ml-4 flex">
-      <a href="in-work">
+      <a routerLink="">
         <span class="sr-only">Your Company</span>
         <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
       </a>
@@ -36,15 +36,15 @@
           <!-- Active: "bg-gray-100", Not Active: "" -->
           <a *ngIf="usersPage" routerLink="admin-page" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Users</a>
           <a routerLink="profile" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Your Profile</a>
-          <a href="in-work" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Settings</a>
-          <a href="in-work" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-3">Sign out</a>
+          <a routerLink="in-work" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Settings</a>
+          <a routerLink="in-work" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-3">Sign out</a>
         </div>
       </div>
     </div>
     
     <!-- Search -->
     <div class="flex xs:ml-6">
-      <a href="in-work" class="p-2 text-gray-400 hover:text-gray-500">
+      <a routerLink="in-work" class="p-2 text-gray-400 hover:text-gray-500">
         <span class="sr-only">Search</span>
         <!-- Heroicon name: outline/magnifying-glass -->
         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
