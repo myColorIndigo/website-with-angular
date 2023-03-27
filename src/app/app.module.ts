@@ -23,6 +23,7 @@ import { SomeUserComponent } from './profile/some-user/some-user.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { UserResolveService } from './sign-in/user-resolve.service';
 import { UserCardComponent } from './admin-page/user-card/user-card.component';
+import { InWorkComponent } from './in-work/in-work.component';
 
 const routes = [
   { path: '', component: MainComponent },
@@ -32,6 +33,7 @@ const routes = [
   { path: 'some-user', component: SomeUserComponent },
   { path: 'admin-page', component: AdminPageComponent },
   { path: 'nav-menu', component: NavComponent },
+  { path: 'in-work', component: InWorkComponent },
 ]
 
 @NgModule({
@@ -49,6 +51,7 @@ const routes = [
     SomeUserComponent,
     AdminPageComponent,
     UserCardComponent,
+    InWorkComponent,
   ],
   imports: [
     BrowserModule,
