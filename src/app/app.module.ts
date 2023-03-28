@@ -19,21 +19,21 @@ import { UserDataInService } from './sign-in/user-data-in.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
-import { SomeUserComponent } from './profile/some-user/some-user.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { UserResolveService } from './sign-in/user-resolve.service';
 import { UserCardComponent } from './admin-page/user-card/user-card.component';
 import { InWorkComponent } from './in-work/in-work.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes = [
   { path: '', component: MainComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'some-user', component: SomeUserComponent },
   { path: 'admin-page', component: AdminPageComponent },
   { path: 'nav-menu', component: NavComponent },
   { path: 'in-work', component: InWorkComponent },
+  { path: 'settings', component: SettingsComponent },
 ]
 
 @NgModule({
@@ -48,10 +48,10 @@ const routes = [
     SignInComponent,
     RegistrationComponent,
     ProfileComponent,
-    SomeUserComponent,
     AdminPageComponent,
     UserCardComponent,
     InWorkComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
