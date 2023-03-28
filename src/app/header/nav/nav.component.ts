@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { fromEvent } from 'rxjs';
 import { UserResolveService } from 'src/app/sign-in/user-resolve.service';
 
 @Component({
@@ -26,5 +27,15 @@ export class NavComponent implements OnInit {
         } 
       },
     ); 
+    /*
+    fromEvent(document, 'click').subscribe(() => {
+      // Переделать залупу
+      if(this.isShown === true) {
+        console.log( this.isShown );
+        this.isShown = false;
+        console.log( this.isShown );
+      }
+    });
+    */
   }
 }
