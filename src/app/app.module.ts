@@ -13,7 +13,6 @@ import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './header/nav/nav.component';
-import { MenuComponent } from './menu/menu.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { UserDataInService } from './sign-in/user-data-in.service';
 import { RegistrationComponent } from './registration/registration.component';
@@ -24,6 +23,7 @@ import { UserResolveService } from './sign-in/user-resolve.service';
 import { UserCardComponent } from './admin-page/user-card/user-card.component';
 import { InWorkComponent } from './in-work/in-work.component';
 import { SettingsComponent } from './settings/settings.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 const routes = [
   { path: '', component: MainComponent },
@@ -44,7 +44,6 @@ const routes = [
     MainComponent,
     FooterComponent,
     NavComponent,
-    MenuComponent,
     SignInComponent,
     RegistrationComponent,
     ProfileComponent,
@@ -52,6 +51,7 @@ const routes = [
     UserCardComponent,
     InWorkComponent,
     SettingsComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
