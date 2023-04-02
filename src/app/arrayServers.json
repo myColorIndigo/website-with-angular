@@ -1,5 +1,6 @@
 [
     {
+        "name": "CS2 RETAKE #2 XPLAY.GG",
         "status": "worked",
         "address": "23.88.25.137:27026",
         "game": "CS2",
@@ -16,6 +17,7 @@
         "site": "1 for 126"
     },
     {
+        "name": "CS2 DM #1",
         "status": "not worked",
         "address": "23.88.25.137:35326",
         "game": "CS2",
@@ -32,6 +34,7 @@
         "site": "1 for 126"
     },
     {
+        "name": "CS2 RETAKE #3",
         "status": "worked",
         "address": "23.88.25.137:23565",
         "game": "CS2",
