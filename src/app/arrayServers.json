@@ -1,0 +1,51 @@
+[
+    {
+        "status": "worked",
+        "address": "23.88.25.137:27026",
+        "game": "CS2",
+        "online": "0/7",
+        "map": "dust_2",
+        "location": "Germany",
+        "hosting": "not found",
+        "number server": "296553",
+        "updated": "5 min ago",
+        "ping": "30",
+        "upTime": "100%",
+        "rang": "1 for 126",
+        "globalRang": "3 for 14102",
+        "site": "1 for 126"
+    },
+    {
+        "status": "not worked",
+        "address": "23.88.25.137:35326",
+        "game": "CS2",
+        "online": "2/6",
+        "map": "dust_2",
+        "location": "Germany",
+        "hosting": "not found",
+        "number server": "296553",
+        "updated": "5 min ago",
+        "ping": "30",
+        "upTime": "100%",
+        "rang": "1 for 126",
+        "globalRang": "3 for 14102",
+        "site": "1 for 126"
+    },
+    {
+        "status": "worked",
+        "address": "23.88.25.137:23565",
+        "game": "CS2",
+        "online": "6/18",
+        "map": "dust_2",
+        "location": "GB",
+        "hosting": "not found",
+        "number server": "296553",
+        "updated": "5 min ago",
+        "ping": "30",
+        "upTime": "100%",
+        "rang": "1 for 126",
+        "globalRang": "3 for 14102",
+        "site": "1 for 126"
+    }
+
+]
