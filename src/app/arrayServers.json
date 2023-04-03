@@ -1,14 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ServersInfoService } from './servers-info.service';
-
-@Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
-})
-export class MainComponent implements OnInit {
-
-  public servers:any = [
+[
     {
         "name": "CS2 RETAKE #2",
         "status": 1,
@@ -61,10 +51,4 @@ export class MainComponent implements OnInit {
         "site": "none"
     }
 
-];
-
-  constructor(private _servers: ServersInfoService) {}
-
-  ngOnInit() {
-  }
-}
+]
