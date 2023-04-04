@@ -12,6 +12,20 @@ module.exports = {
       xl: '1280px',
      },
     extend: {
+      colors: {
+        'based-orange': 'rgb(224, 127, 9)',
+        'dline-orange': 'rgb(200, 80, 13)',
+        'lline-orange': 'rgb(255, 209, 148)',
+        'special-orange': '#9a4019',
+        'based-grey': 'rgb(217, 217, 217)',
+        'line-grey': 'rgb(190, 190, 190)',
+        'based-blue': 'rgb(59, 65, 92)',
+        'light-blue': 'rgb(74, 80, 106)',
+        'line-blue': 'rgb(32, 45, 100)',
+        'line-light-blue': 'rgb(59, 70, 123)',
+        'center-orange': '#ff9b01',
+        'center-blue': '#4d526a',
+      },
       animation: {
         'dropdownMenuIn': 'dropdownMenuIn ease-out 0.2s',
         'dropdownMenuOut': 'dropdownMenuOut ease-out 0.2s',
