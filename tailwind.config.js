@@ -26,6 +26,9 @@ module.exports = {
         'center-orange': '#ff9b01',
         'center-blue': '#4d526a',
       },
+      backgroundImage: {
+        'de_dust2': "url('app/de_dust2_logo.png')",
+      },
       animation: {
         'dropdownMenuIn': 'dropdownMenuIn ease-out 0.2s',
         'dropdownMenuOut': 'dropdownMenuOut ease-out 0.2s',
