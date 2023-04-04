@@ -1,12 +1,12 @@
 
 <app-header></app-header>
 
-<div class="bg-white py-24 sm:py-32">
+<div class="bg-based-grey py-24 sm:py-32">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="flex flex-row flex-wrap justify-around items-stretch gap-1"> <!-- Придумать структуру элемента списка, отвечающего за сервер -->
         <div *ngFor="let server of servers">
-          <div class="bg-neutral-100 px-4 py-5 grid grid-cols-3 grid-rows-2 gap-3 "> <!-- Добавить тени по бокам, округление, фотку даста 2, частично перекрыть фотку даста -->
-            <div class="text-sm font-medium text-gray-500 col-span-3">name: {{server.name}}</div>
+          <div class="bg-based-orange px-4 py-5 grid grid-cols-3 grid-rows-2 gap-3 rounded-lg shadow-md shadow-line-grey"> <!-- Добавить тени по бокам, округление, фотку даста 2, частично перекрыть фотку даста -->
+            <div class="text-base font-medium text-gray-700 col-span-3">{{server.name}}</div>
             <div class="text-sm text-gray-900 col-span-1">online: {{server.online}}</div>
             <div class="text-sm text-gray-900 col-span-1">map: {{server.map}}</div>
           </div>
