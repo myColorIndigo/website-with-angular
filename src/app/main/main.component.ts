@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ServersInfoService } from './servers-info.service';
+import { Subscription, debounceTime, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements AfterViewInit , OnInit, OnDestroy {
 
+  @ViewChild('btn', { static: true }) button: any;
+  
   public toggleList: boolean = true;
   public servers: any = [
     {
@@ -63,9 +66,30 @@ export class MainComponent implements OnInit {
     }
 
 ];
+  buttonSubscription: any;
 
-  constructor(private _servers: ServersInfoService) {}
+  constructor(private elm: ElementRef, private _servers: ServersInfoService) {}
 
   ngOnInit() {
+    /* new HTMLInputElement()
+    const search = fromEvent(HasEventTargetAddRemove, 'input')
+    search.subscribe(response => console.log(response)); */
+  }
+
+  
+  ngAfterViewInit() {
+    this.buttonClick();
+  }
+ 
+ 
+  buttonClick() {
+    this.buttonSubscription =  fromEvent(this.button.nativeElement, 'click')
+        .pipe(debounceTime(300))
+        .subscribe(res => console.log(res));
+  }
+ 
+ 
+  ngOnDestroy() {
+    this.buttonSubscription.unsubscribe()
   }
 }
