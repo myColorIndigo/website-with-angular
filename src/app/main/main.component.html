@@ -1,12 +1,28 @@
 
 <app-header></app-header>
 
-<div class="bg-based-gray py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+  <div class="bg-based-gray py-8 sm:py-10">
+    <div class="mx-auto px-6 lg:px-8 pb-4 sm:pb-6">
+      <button (click)="toggleList = !toggleList" class="rounded-md bg-based-orange px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-dline-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-based-orange">Change form</button>
+    </div>
+    <!-- List servers row -->
+    <div *ngIf="toggleList" class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="flex flex-row flex-wrap justify-around items-stretch gap-3"> <!-- Придумать структуру элемента списка, отвечающего за сервер -->
         <div *ngFor="let server of servers">
-          <div class="bg-based-orange bg-de_dust2 bg-local bg-clip-border bg-origin-border bg-right bg-no-repeat bg-contain px-4 py-5 grid grid-cols-3 grid-rows-2 gap-3 border-4 border-dline-orange rounded-l-sm rounded-r-full drop-shadow-lg shadow-lline-orange"> <!-- Добавить тени по бокам, округление, фотку даста 2, частично перекрыть фотку даста -->
+          <div class="bg-white bg-de_dust2 bg-local bg-clip-border bg-origin-border bg-right bg-no-repeat bg-contain px-4 py-5 grid grid-cols-3 grid-rows-2 gap-3 border-4 border-dline-orange rounded-r-full drop-shadow-lg shadow-lline-orange">
             <div class="text-lg font-bold text-gray-700 col-span-3">{{server.name}}</div>
+            <div class="text-base text-gray-900 col-span-1">online: {{server.online}}</div>
+            <div class="text-base text-gray-900 col-span-1">map: {{server.map}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- List servers column -->
+    <div *ngIf="!toggleList" class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="flex flex-col flex-nowrap justify-start items-stretch gap-1">
+        <div *ngFor="let server of servers">
+          <div class="bg-white bg-de_dust2 bg-local bg-clip-border bg-origin-border bg-right bg-no-repeat bg-contain px-2 py-2 grid grid-cols-5 grid-rows-1 gap-3 border-2 border-dline-orange rounded-r-full">
+            <div class="text-base font-bold text-gray-700 col-span-3">{{server.name}}</div>
             <div class="text-base text-gray-900 col-span-1">online: {{server.online}}</div>
             <div class="text-base text-gray-900 col-span-1">map: {{server.map}}</div>
           </div>
