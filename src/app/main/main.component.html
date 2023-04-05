@@ -2,12 +2,33 @@
 <app-header></app-header>
 
   <div class="bg-based-gray py-8 sm:py-10">
+    <!-- Filters group -->
     <div class="mx-auto px-6 lg:px-8 pb-4 sm:pb-6">
-      <button (click)="toggleList = !toggleList" class="rounded-md bg-based-orange px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-dline-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-based-orange">Change form</button>
+      <div class="flex flex-row flex-wrap justify-between gap-5">
+        
+        <div class="flex flex-row flex-nowrap gap-1">
+          <input type="text" id="Search">
+          <a routerLink="in-work" class="p-2 text-based-orange hover:text-dline-orange">
+            <span class="sr-only">Search</span>
+            <!-- Heroicon name: outline/magnifying-glass -->
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+          </a>
+          
+          <button (click)="toggleList = !toggleList" class="self-end rounded-md bg-based-orange ml-6 md:ml-24 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-dline-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-based-orange">Change form</button>
+        </div>
+
+        <div class="flex flex-row flex-nowrap gap-2">
+          <button class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">G</button>
+          <button class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">G</button>
+          <button class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">G</button>
+        </div>
+      </div>
     </div>
     <!-- List servers row -->
     <div *ngIf="toggleList" class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="flex flex-row flex-wrap justify-around items-stretch gap-3"> <!-- Придумать структуру элемента списка, отвечающего за сервер -->
+      <div class="flex flex-row flex-wrap justify-between items-stretch gap-3"> <!-- Придумать структуру элемента списка, отвечающего за сервер -->
         <div *ngFor="let server of servers">
           <div class="bg-white bg-de_dust2 bg-local bg-clip-border bg-origin-border bg-right bg-no-repeat bg-contain px-4 py-5 grid grid-cols-3 grid-rows-2 gap-3 border-4 border-dline-orange rounded-r-full drop-shadow-lg shadow-lline-orange">
             <div class="text-lg font-bold text-gray-700 col-span-3">{{server.name}}</div>
