@@ -8,7 +8,8 @@ import { ServersInfoService } from './servers-info.service';
 })
 export class MainComponent implements OnInit {
 
-  public servers:any = [
+  public toggleList: boolean = true;
+  public servers: any = [
     {
         "name": "CS2 RETAKE #2",
         "status": 1,
