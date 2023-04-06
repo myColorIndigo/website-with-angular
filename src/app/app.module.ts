@@ -35,6 +35,7 @@ const routes = [
   { path: 'nav-menu', component: NavComponent },
   { path: 'in-work', component: InWorkComponent },
   { path: 'settings', component: SettingsComponent },
+  { path: 'server', component: ServerCardComponent },
 ]
 
 @NgModule({
