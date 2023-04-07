@@ -75,8 +75,14 @@ export class MainComponent implements AfterViewInit , OnInit, OnDestroy {
     const a = this.servers.map((item: { name: string; }) => item.name).filter((word: string) => {
       if (word.toLowerCase().indexOf(this.searchInputData.toLowerCase()) !== -1) {
         console.log(word);
+        for (let i = 0; i < this.servers.length; i++) {
+          if (this.servers[i].name === word) {
+            console.log(this.servers[i]);
+            this.servers = this.servers[i]; // Разобраться с изменением *ngFor, т.к. неуверен что можно будет изменить компонент поверх ангуляра, или попробовать изменить структуру HTML напрямую
+          }
+        }
       }
-      });
+    });
   }
 
   ngOnInit() {
@@ -84,13 +90,13 @@ export class MainComponent implements AfterViewInit , OnInit, OnDestroy {
     const search = fromEvent(myInput, 'input');
     search.pipe(debounceTime(400)).subscribe((e: Event) => {
       let inputContent = (e.target as HTMLInputElement).value;
-      console.log(inputContent);
+      // console.log(inputContent);
       if (inputContent !== '') {
         this.searchInputData = inputContent;
       }
     });
 
-  } // Выводит буквы, нужно строчки, добавить задержку debounceTime
+  }
 
   
   ngAfterViewInit() {
