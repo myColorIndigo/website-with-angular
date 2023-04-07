@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ServersInfoService } from './servers-info.service';
-import { Subscription, debounceTime, fromEvent, switchMap } from 'rxjs';
+import { Subscription, debounceTime, fromEvent, map, pairwise, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -73,7 +73,10 @@ export class MainComponent implements AfterViewInit , OnInit, OnDestroy {
   ngOnInit() {
     const myInput = document.getElementById('SearchServer') as HTMLInputElement;
     const search = fromEvent(myInput, 'input');
-    search.pipe(switchMap((smt: Event) => (smt.target as HTMLInputElement).value)).subscribe(response => console.log(response));
+    search.pipe(debounceTime(400)).subscribe((e: Event) => { 
+      console.log((e.target as HTMLInputElement).value);
+    });
+
   } // Выводит буквы, нужно строчки, добавить задержку debounceTime
 
   
