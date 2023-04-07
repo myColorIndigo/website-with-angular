@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ServersInfoService } from './servers-info.service';
-import { Subscription, debounceTime, fromEvent, map, pairwise, switchMap } from 'rxjs';
+import { debounceTime, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -11,7 +11,8 @@ export class MainComponent implements AfterViewInit , OnInit, OnDestroy {
 
   @ViewChild('btn', { static: true }) button: any;
   
-  public toggleList: boolean = true;
+  public searchInputData: string = '';
+  public toggleList: boolean = true; // Возможно стоит к кнопкам фильров применить *ngIf и сделать toggle
   public servers: any = [
     {
         "name": "CS2 RETAKE #2",
@@ -70,11 +71,23 @@ export class MainComponent implements AfterViewInit , OnInit, OnDestroy {
 
   constructor(private elm: ElementRef, private _servers: ServersInfoService) {}
 
+  search() {
+    const a = this.servers.map((item: { name: string; }) => item.name).filter((word: string) => {
+      if (word.toLowerCase().indexOf(this.searchInputData.toLowerCase()) !== -1) {
+        console.log(word);
+      }
+      });
+  }
+
   ngOnInit() {
     const myInput = document.getElementById('SearchServer') as HTMLInputElement;
     const search = fromEvent(myInput, 'input');
-    search.pipe(debounceTime(400)).subscribe((e: Event) => { 
-      console.log((e.target as HTMLInputElement).value);
+    search.pipe(debounceTime(400)).subscribe((e: Event) => {
+      let inputContent = (e.target as HTMLInputElement).value;
+      console.log(inputContent);
+      if (inputContent !== '') {
+        this.searchInputData = inputContent;
+      }
     });
 
   } // Выводит буквы, нужно строчки, добавить задержку debounceTime
