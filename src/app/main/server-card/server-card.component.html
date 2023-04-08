@@ -1,1 +1,28 @@
-<p>server-card works!</p>
+<div class="bg-based-gray py-8 sm:py-10">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 pb-4 lg:pb-6 bg-white">
+        <div class="grid grid-cols-3 grid-rows-2 gap-2 place-content-stretch place-items-center">
+            <div class="text-3xl text-center text-gray-700 col-span-3">{{server.name}}</div>
+            <div class="text-xs text-center col-span-1">
+                <p class="text-2xl">ICON SERVER</p>
+                <br>
+                <p>(or something else)</p>
+            </div>
+            <div class="text-base text-gray-900 col-span-1">
+                <div>
+                    <p>status: {{server.status}}</p>
+                    <p>address: {{server.address}}</p>
+                    <p>game: {{server.game}}</p>
+                    <p>online: {{server.online}}</p>
+                </div>
+            </div>
+            <div class="text-base text-gray-900 col-span-1">
+                <div>
+                    <p>id: {{server.id}}</p>
+                    <p>update: {{server.update}}</p>
+                    <p>ping: {{server.ping}}</p>
+                    <p>upTime: {{server.upTime}}</p>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
