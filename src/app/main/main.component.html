@@ -31,7 +31,7 @@
     </div>
     <!-- List servers row -->
     <div *ngIf="toggleList" class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="flex flex-row flex-wrap justify-between items-stretch gap-3"> <!-- Придумать структуру элемента списка, отвечающего за сервер -->
+      <div class="flex flex-row flex-wrap justify-around items-stretch gap-3"> <!-- Придумать структуру элемента списка, отвечающего за сервер -->
         <div *ngFor="let server of servers">
           <a routerLink="server">
             <div class="bg-white bg-de_dust2 bg-local bg-clip-border bg-origin-border bg-right bg-no-repeat bg-contain px-4 py-5 grid grid-cols-3 grid-rows-2 gap-3 border-4 border-dline-orange rounded-r-full drop-shadow-lg shadow-lline-orange">
