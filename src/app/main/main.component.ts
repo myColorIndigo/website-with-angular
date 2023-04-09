@@ -72,17 +72,24 @@ export class MainComponent implements AfterViewInit , OnInit, OnDestroy {
   constructor(private elm: ElementRef, private _servers: ServersInfoService) {}
 
   search() {
-    const a = this.servers.map((item: { name: string; }) => item.name).filter((word: string) => {
+    let serversCount: Array<object> = [];
+    let searchForName = this.servers.map((item: { name: string; }) => item.name).filter((word: string) => {
       if (word.toLowerCase().indexOf(this.searchInputData.toLowerCase()) !== -1) {
         console.log(word);
         for (let i = 0; i < this.servers.length; i++) {
+
           if (this.servers[i].name === word) {
             console.log(this.servers[i]);
-            this.servers = this.servers[i]; // Разобраться с изменением *ngFor, т.к. неуверен что можно будет изменить компонент поверх ангуляра, или попробовать изменить структуру HTML напрямую
+            serversCount.push(this.servers[i]);
+            console.log(serversCount);
           }
+          
         }
       }
     });
+    console.log(serversCount);
+    this.servers = serversCount;
+    // this.servers = serversCount; Разобраться с изменением *ngFor, т.к. неуверен что можно будет изменить компонент поверх ангуляра, или попробовать изменить структуру HTML напрямую
   }
 
   ngOnInit() {
