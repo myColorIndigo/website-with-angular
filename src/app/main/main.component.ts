@@ -7,15 +7,19 @@ import { debounceTime, fromEvent } from 'rxjs';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements AfterViewInit , OnInit, OnDestroy {
+export class MainComponent implements OnInit {
 
-  @ViewChild('btn', { static: true }) button: any;
+  // @ViewChild('btn', { static: true }) button: any;
   
   public searchInputData: string = '';
   public toggleList: boolean = true; // Возможно стоит к кнопкам фильров применить *ngIf и сделать toggle
   public servers: any = [];
+
+  public isOnFilterName: boolean = false;
+  public isOnFilterOnline: boolean = false;
+  public isOnFilterMap: boolean = false;
   
-  buttonSubscription: any;
+  // buttonSubscription: any;
 
   constructor(private elm: ElementRef, private _servers: ServersInfoService) {}
 
@@ -37,7 +41,6 @@ export class MainComponent implements AfterViewInit , OnInit, OnDestroy {
     });
     // console.log(serversCount);
     this.servers = serversCount;
-    // this.servers = serversCount; Разобраться с изменением *ngFor, т.к. неуверен что можно будет изменить компонент поверх ангуляра, или попробовать изменить структуру HTML напрямую
   }
 
   ngOnInit() {
@@ -56,7 +59,44 @@ export class MainComponent implements AfterViewInit , OnInit, OnDestroy {
 
   }
 
-  
+  filterName() {
+  //  this.servers = this.servers.map((item: { name: string; }) => item.name).filter((word: string) => {});
+  }
+
+  filterOnline() { // Возможно немного переделать
+    if (this.isOnFilterOnline === false) {
+      this.servers = this.servers.sort(function(a: any, b: any) {
+        if (a.online > b.online) {
+          return -1;
+        }
+        if (a.online < b.online) {
+          return 1;
+        }
+        return 0;
+      });
+
+      this.isOnFilterOnline = true;
+    } else {
+      this.servers = this.servers.sort(function(a: any, b: any) {
+        if (a.online > b.online) {
+          return 1;
+        }
+        if (a.online < b.online) {
+          return -1;
+        }
+        return 0;
+      });
+      
+      this.isOnFilterOnline = false;
+    }
+    
+  }
+
+  filterMap() {
+
+  }
+
+  /*
   ngAfterViewInit() {
     this.buttonClick();
   }
@@ -72,4 +112,5 @@ export class MainComponent implements AfterViewInit , OnInit, OnDestroy {
   ngOnDestroy() {
     this.buttonSubscription.unsubscribe()
   }
+  */
 }
