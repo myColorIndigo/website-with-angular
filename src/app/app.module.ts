@@ -24,6 +24,7 @@ import { UserCardComponent } from './admin-page/user-card/user-card.component';
 import { InWorkComponent } from './in-work/in-work.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ServersInfoService } from './main/servers-info.service';
 import { ServerCardComponent } from './main/server-card/server-card.component';
 
 const routes = [
@@ -63,7 +64,7 @@ const routes = [
     AppRoutingModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [VersionService, UserDataInService, UserResolveService],
+  providers: [VersionService, UserDataInService, UserResolveService, ServersInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
