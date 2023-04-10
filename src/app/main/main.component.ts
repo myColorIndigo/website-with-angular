@@ -23,19 +23,19 @@ export class MainComponent implements AfterViewInit , OnInit, OnDestroy {
     let serversCount: any = [];
     let searchForName = this._servers.servers.map((item: { name: string; }) => item.name).filter((word: string) => {
       if (word.toLowerCase().indexOf(this.searchInputData.toLowerCase()) !== -1) {
-        console.log(word);
+        // console.log(word);
         for (let i = 0; i < this._servers.servers.length; i++) {
 
           if (this._servers.servers[i].name === word) {
-            console.log(this._servers.servers[i]);
+            // console.log(this._servers.servers[i]);
             serversCount.push(this._servers.servers[i]);
-            console.log(serversCount);
+            // console.log(serversCount);
           }
           
         }
       }
     });
-    console.log(serversCount);
+    // console.log(serversCount);
     this.servers = serversCount;
     // this.servers = serversCount; Разобраться с изменением *ngFor, т.к. неуверен что можно будет изменить компонент поверх ангуляра, или попробовать изменить структуру HTML напрямую
   }
@@ -44,12 +44,14 @@ export class MainComponent implements AfterViewInit , OnInit, OnDestroy {
     this.servers = this._servers.getServers();
     const myInput = document.getElementById('SearchServer') as HTMLInputElement;
     const search = fromEvent(myInput, 'input');
-    search.pipe(debounceTime(400)).subscribe((e: Event) => {
+    search.subscribe((e: Event) => {
       let inputContent = (e.target as HTMLInputElement).value;
       // console.log(inputContent);
       if (inputContent !== '') {
         this.searchInputData = inputContent;
-      }
+      } else {
+        this.servers = this._servers.servers;
+      } // Моментального изменения на странице, возможно придется изменить
     });
 
   }
