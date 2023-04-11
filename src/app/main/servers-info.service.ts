@@ -29,7 +29,7 @@ export class ServersInfoService {
         "address": "23.88.25.137:35235",
         "game": "CS2",
         "online": 2,
-        "map": "dust_2",
+        "map": "nuke",
         "location": "Germany",
         "hosting": "not found",
         "id": 154553,
@@ -60,7 +60,8 @@ export class ServersInfoService {
 
 ];
 
-  constructor() { }
+  constructor() { } // При написании запроса на список серверов,
+                    // в компоненте ts нужно будет подобрать правильный ng по одному запросу, а затем передать его в этот сервис
 
   public getServers() {
     return this.servers;
