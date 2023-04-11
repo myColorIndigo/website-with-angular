@@ -12,7 +12,7 @@ export class MainComponent implements OnInit {
   // @ViewChild('btn', { static: true }) button: any;
   
   public searchInputData: string = '';
-  public toggleList: boolean = true; // Возможно стоит к кнопкам фильров применить *ngIf и сделать toggle
+  public toggleList: boolean = true;
   public servers: any = [];
 
   public isOnFilterName: boolean = false;
@@ -59,11 +59,36 @@ export class MainComponent implements OnInit {
 
   }
 
+// Возможно немного переделать фильтры:
   filterName() {
-  //  this.servers = this.servers.map((item: { name: string; }) => item.name).filter((word: string) => {});
+    if (this.isOnFilterName === false) {
+        this.servers = this.servers.sort((a:any, b:any) => {
+          if (a.name.toLowerCase() < b.name.toLowerCase()) {
+            return -1;
+          }
+          if (a.name.toLowerCase() > b.name.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        });
+  
+        this.isOnFilterName = true;
+      } else {
+        this.servers = this.servers.sort((a:any, b:any) => {
+          if (a.name.toLowerCase() < b.name.toLowerCase()) {
+            return 1;
+          }
+          if (a.name.toLowerCase() > b.name.toLowerCase()) {
+            return -1;
+          }
+          return 0;
+        });
+        
+        this.isOnFilterName = false;
+      }
   }
 
-  filterOnline() { // Возможно немного переделать
+  filterOnline() {
     if (this.isOnFilterOnline === false) {
       this.servers = this.servers.sort(function(a: any, b: any) {
         if (a.online > b.online) {
@@ -77,7 +102,7 @@ export class MainComponent implements OnInit {
 
       this.isOnFilterOnline = true;
     } else {
-      this.servers = this.servers.sort(function(a: any, b: any) {
+      this.servers = this.servers.sort((a: any, b: any) => {
         if (a.online > b.online) {
           return 1;
         }
@@ -93,7 +118,31 @@ export class MainComponent implements OnInit {
   }
 
   filterMap() {
+    if (this.isOnFilterMap === false) {
+      this.servers = this.servers.sort((a:any, b:any) => {
+        if (a.map.toLowerCase() < b.map.toLowerCase()) {
+          return -1;
+        }
+        if (a.map.toLowerCase() > b.map.toLowerCase()) {
+          return 1;
+        }
+        return 0;
+      });
 
+      this.isOnFilterMap = true;
+    } else {
+      this.servers = this.servers.sort((a:any, b:any) => {
+        if (a.map.toLowerCase() < b.map.toLowerCase()) {
+          return 1;
+        }
+        if (a.map.toLowerCase() > b.map.toLowerCase()) {
+          return -1;
+        }
+        return 0;
+      });
+      
+      this.isOnFilterMap = false;
+    }
   }
 
   /*
