@@ -16,7 +16,6 @@ import { NavComponent } from './header/nav/nav.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { UserDataInService } from './sign-in/user-data-in.service';
 import { RegistrationComponent } from './registration/registration.component';
-import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { UserResolveService } from './sign-in/user-resolve.service';
@@ -26,18 +25,6 @@ import { SettingsComponent } from './settings/settings.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ServersInfoService } from './main/servers-info.service';
 import { ServerCardComponent } from './main/server-card/server-card.component';
-
-const routes = [
-  { path: '', component: MainComponent },
-  { path: 'sign-in', component: SignInComponent },
-  { path: 'registration', component: RegistrationComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'admin-page', component: AdminPageComponent },
-  { path: 'nav-menu', component: NavComponent },
-  { path: 'in-work', component: InWorkComponent },
-  { path: 'settings', component: SettingsComponent },
-  { path: 'server', component: ServerCardComponent },
-]
 
 @NgModule({
   declarations: [
@@ -61,8 +48,7 @@ const routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule,
-    RouterModule.forRoot(routes),
+    AppRoutingModule
   ],
   providers: [VersionService, UserDataInService, UserResolveService, ServersInfoService],
   bootstrap: [AppComponent]
