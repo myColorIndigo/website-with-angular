@@ -12,6 +12,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
+  { path: 'home', component: MainComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'profile', component: ProfileComponent },
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path: 'nav-menu', component: NavComponent },
   { path: 'in-work', component: InWorkComponent },
   { path: 'settings', component: SettingsComponent },
-  { path: 'server', component: ServerCardComponent },
+  { path: 'home/:serverID', component: ServerCardComponent },
 ];
 
 @NgModule({
