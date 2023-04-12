@@ -14,6 +14,7 @@ export class MainComponent implements OnInit {
   public searchInputData: string = '';
   public toggleList: boolean = true;
   public servers: any = [];
+  public isShownServers: boolean = true;
 
   public isOnFilterName: boolean = false;
   public isOnFilterOnline: boolean = false;
@@ -40,7 +41,12 @@ export class MainComponent implements OnInit {
       }
     });
     // console.log(serversCount);
-    this.servers = serversCount;
+    
+    if (serversCount.length === 0) {
+      return this.isShownServers = false;
+    }
+    this.isShownServers = true;
+    return this.servers = serversCount;
   }
 
   ngOnInit() {
@@ -54,6 +60,7 @@ export class MainComponent implements OnInit {
         this.searchInputData = inputContent;
       } else {
         this.servers = this._servers.servers;
+        this.searchInputData = '';
       } // Моментального изменения на странице, возможно придется изменить
     });
 
