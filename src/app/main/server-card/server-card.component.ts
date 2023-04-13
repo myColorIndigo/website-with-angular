@@ -1,32 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ServersInfoService } from '../servers-info.service';
 
 @Component({
   selector: 'app-server-card',
   templateUrl: './server-card.component.html',
   styleUrls: ['./server-card.component.css']
 })
-export class ServerCardComponent {
+export class ServerCardComponent implements OnInit {
 
-  public server: any = {
-        "name": "CS2 RETAKE #2",
-        "status": 1,
-        "address": "23.88.25.137:27026",
-        "game": "CS2",
-        "online": 0,
-        "map": "dust_2",
-        "location": "Germany",
-        "hosting": "not found",
-        "id": 296553,
-        "update": 1680461173,
-        "ping": 30,
-        "upTime": 100,
-        "rang": 1,
-        "globalRang": 3,
-        "site": "none"
-    };
+  public server: any = {};
 
-    constructor(private route: ActivatedRoute) {
-      this.route.params.subscribe(params => console.log(params));
-    }
+  public id:any = { serverID: null }; // Поменял id на строковое в базах данных, для того чтобы передача значения как параметр в стоку совпадала типами данных
+
+  constructor(private route: ActivatedRoute, private _servers: ServersInfoService) {
+    this.route.params.subscribe(params => this.id = params);
+  }
+
+  ngOnInit() { // Возможно заменить oninit на другой ng
+    this.server = this._servers.getServers().find((servers: any) => {
+      
+      if (servers.id === this.id.serverID) {
+        return this.server = servers;
+      }
+    });
+    
+  }
 }
