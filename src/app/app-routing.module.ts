@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'nav-menu', component: NavComponent },
   { path: 'in-work', component: InWorkComponent },
   { path: 'settings', component: SettingsComponent },
-  { path: 'home/:serverID', component: ServerCardComponent },
+  { path: 'server/:serverID', component: ServerCardComponent },
 ];
 
 @NgModule({
