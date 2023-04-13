@@ -4,7 +4,7 @@
             <button routerLink="" class="self-end rounded-md bg-based-orange ml-6 md:ml-24 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-dline-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-based-orange">Back to list</button>
         </div>
         <div class="grid grid-cols-3 grid-rows-2 gap-2 place-content-stretch place-items-center">
-            <div class="text-3xl text-center text-gray-700 col-span-3">{{server.name}}</div>
+            <div class="text-3xl text-center text-gray-700 col-span-3">{{server?.name}}</div>
             <div class="text-xs text-center col-span-1">
                 <p class="text-2xl">ICON SERVER</p>
                 <br>
@@ -12,24 +12,24 @@
             </div>
             <div class="text-base text-gray-900 col-span-1">
                 <div>
-                    <p>status: {{server.status}}</p>
-                    <p>address: {{server.address}}</p>
-                    <p>game: {{server.game}}</p>
-                    <p>online: {{server.online}}</p>
-                    <p>map: {{server.map}}</p>
-                    <p>location: {{server.location}}</p>
-                    <p>hosting: {{server.hosting}}</p>
+                    <p>status: {{server?.status}}</p>
+                    <p>address: {{server?.address}}</p>
+                    <p>game: {{server?.game}}</p>
+                    <p>online: {{server?.online}}</p>
+                    <p>map: {{server?.map}}</p>
+                    <p>location: {{server?.location}}</p>
+                    <p>hosting: {{server?.hosting}}</p>
                 </div>
             </div>
             <div class="text-base text-gray-900 col-span-1">
                 <div>
-                    <p>id: {{server.id}}</p>
-                    <p>update: {{server.update}}</p>
-                    <p>ping: {{server.ping}}</p>
-                    <p>upTime: {{server.upTime}}</p>
-                    <p>rang: {{server.rang}}</p>
-                    <p>globalRang: {{server.globalRang}}</p>
-                    <p>site: {{server.site}}</p>
+                    <p>id: {{server?.id}}</p>
+                    <p>update: {{server?.update}}</p>
+                    <p>ping: {{server?.ping}}</p>
+                    <p>upTime: {{server?.upTime}}</p>
+                    <p>rang: {{server?.rang}}</p>
+                    <p>globalRang: {{server?.globalRang}}</p>
+                    <p>site: {{server?.site}}</p>
                 </div>
             </div>            
         </div>
