@@ -12,7 +12,16 @@ export class AdminUsersService {
 
   constructor(private _http: HttpClient, private readonly resolveService: UserResolveService) { }
 
-  getUsers(){
+  getUsers() {
+    this.isAdmin();
+
+    const tokenUser = 'Bearer ' + this.statusToken?.token;
+
+    return this._http.get<any>('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/admin/users', { headers: new HttpHeaders({ 'Authorization': tokenUser })});
+
+  }
+
+  isAdmin() {
     this.resolveService.userProfile$.subscribe(
       value => {
         if (value.data.user !== undefined) {
@@ -23,10 +32,13 @@ export class AdminUsersService {
         }
       }
     );
+  }
 
-    const tokenUser = 'Bearer ' + this.statusToken?.token;
-
-    return this._http.get<any>('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/admin/users', { headers: new HttpHeaders({ 'Authorization': tokenUser })});
-
+  adminGuard() { // Гард не получает ответ, т.к. метод внутри админ сервиса
+    if (this.tokenDataProfile !== undefined) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
