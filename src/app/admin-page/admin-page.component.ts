@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AdminUsersService } from './admin-users.service';
 
 @Component({
@@ -6,13 +6,13 @@ import { AdminUsersService } from './admin-users.service';
   templateUrl: './admin-page.component.html',
   styleUrls: ['./admin-page.component.css']
 })
-export class AdminPageComponent {
+export class AdminPageComponent implements OnInit {
 
   public users: any = [];
 
   constructor(private _users: AdminUsersService) {}
 
-  showUsers() {
+  ngOnInit() {
     this._users.getUsers().subscribe(userData => this.users = userData.data.users); 
   }
 
