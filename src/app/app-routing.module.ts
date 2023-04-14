@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { AdminGuard } from './admin-page/admin.guard';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -16,7 +17,9 @@ const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'admin-page', component: AdminPageComponent },
+  { path: 'admin-page',
+    canActivate: [AdminGuard],
+    component: AdminPageComponent },
   { path: 'nav-menu', component: NavComponent },
   { path: 'in-work', component: InWorkComponent },
   { path: 'settings', component: SettingsComponent },

@@ -25,6 +25,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ServersInfoService } from './main/servers-info.service';
 import { ServerCardComponent } from './main/server-card/server-card.component';
+import { AdminGuard } from './admin-page/admin.guard';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { ServerCardComponent } from './main/server-card/server-card.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [VersionService, UserDataInService, UserResolveService, ServersInfoService],
+  providers: [VersionService, UserDataInService, UserResolveService, ServersInfoService, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
