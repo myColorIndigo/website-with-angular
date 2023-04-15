@@ -33,12 +33,4 @@ export class AdminUsersService {
       }
     );
   }
-
-  adminGuard() { // Гард не получает ответ, т.к. метод внутри админ сервиса
-    if (this.tokenDataProfile !== undefined) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 }
