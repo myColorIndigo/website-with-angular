@@ -31,7 +31,23 @@ export class UserDataInService {
 
     console.log(await promiseProfile); // Прописать замену с await
 
+    this.guardUser();
+    this.guardAdmin();
     return this.userResolveService.takeDataProfile(await promiseProfile), this.userResolveService.tokenUser(await promiseToken);
-     // передать данные в юзер резолв сервис
   };
+
+  guardUser() {
+    if (this.tokenDataProfile !== undefined) {
+      return true;
+    }
+    return false;
+  }
+
+  guardAdmin() {
+    if (this.tokenDataProfile.data.user.role === 'admin') {
+      return true;
+    }
+    return false;
+  }
+
 }
