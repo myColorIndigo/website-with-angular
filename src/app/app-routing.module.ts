@@ -14,7 +14,6 @@ import { UserGuard } from './sign-in/user.guard';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
-  { path: 'home', component: MainComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'registration', component: RegistrationComponent },
 
@@ -26,14 +25,11 @@ const routes: Routes = [
     canActivate: [AdminGuard],
     component: AdminPageComponent },
 
-  { path: 'nav-menu',
-    canActivate: [UserGuard],
-    component: NavComponent },
-    
   { path: 'settings',
     canActivate: [UserGuard],
     component: SettingsComponent },
     
+  { path: 'nav-menu', component: NavComponent },
   { path: 'in-work', component: InWorkComponent },
   { path: 'server/:serverID', component: ServerCardComponent },
 ];
