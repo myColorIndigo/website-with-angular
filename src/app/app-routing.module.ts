@@ -10,19 +10,31 @@ import { RegistrationComponent } from './registration/registration.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AdminGuard } from './admin-page/admin.guard';
+import { UserGuard } from './sign-in/user.guard';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
   { path: 'home', component: MainComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'profile', component: ProfileComponent },
+
+  { path: 'profile',
+    canActivate: [UserGuard],
+    component: ProfileComponent },
+
   { path: 'admin-page',
     canActivate: [AdminGuard],
     component: AdminPageComponent },
-  { path: 'nav-menu', component: NavComponent },
+
+  { path: 'nav-menu',
+    canActivate: [UserGuard],
+    component: NavComponent },
+    
+  { path: 'settings',
+    canActivate: [UserGuard],
+    component: SettingsComponent },
+    
   { path: 'in-work', component: InWorkComponent },
-  { path: 'settings', component: SettingsComponent },
   { path: 'server/:serverID', component: ServerCardComponent },
 ];
 
