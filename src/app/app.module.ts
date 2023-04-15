@@ -26,6 +26,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ServersInfoService } from './main/servers-info.service';
 import { ServerCardComponent } from './main/server-card/server-card.component';
 import { AdminGuard } from './admin-page/admin.guard';
+import { UserGuard } from './sign-in/user.guard';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { AdminGuard } from './admin-page/admin.guard';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [VersionService, UserDataInService, UserResolveService, ServersInfoService, AdminGuard],
+  providers: [VersionService, UserDataInService, UserResolveService, ServersInfoService, UserGuard, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
