@@ -14,8 +14,12 @@ export class AdminUsersService {
 
   getUsers() {
     this.isAdmin();
-
-    const tokenUser = 'Bearer ' + this.statusToken?.token;
+    let tokenUser = 'Bearer ' + this.statusToken?.token;
+    
+    if (sessionStorage.getItem('userRole') === 'admin') {
+      //console.log(sessionStorage.getItem('adminToken'));
+      tokenUser = 'Bearer ' + sessionStorage.getItem('adminToken');
+    }
 
     return this._http.get<any>('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/admin/users', { headers: new HttpHeaders({ 'Authorization': tokenUser })});
 
