@@ -20,7 +20,7 @@ export class NavComponent implements OnInit {
       // Изменения при авторизации сюда
         if(sessionStorage.getItem('userRole') === 'admin') {
           this.usersPage = true;
-          console.log(sessionStorage.getItem('userRole'));
+          //console.log(sessionStorage.getItem('userRole'));
         } else {
           this.usersPage = false;
         }
@@ -28,7 +28,7 @@ export class NavComponent implements OnInit {
     } else {
       this.userIconNav = false;
     }
-    console.log(sessionStorage.getItem('userID') );
+    //console.log(sessionStorage.getItem('userID') );
     //sessionStorage.clear();
 
     // Для моментального обновления при авторизации:
@@ -38,7 +38,7 @@ export class NavComponent implements OnInit {
           
             if(value.data.user.role === 'admin') {
               this.usersPage = true;
-              console.log(value);
+              //console.log(value);
             }
           this.userIconNav = true;
         } 
