@@ -30,7 +30,11 @@ export class UserDataInService {
     });
 
     console.log(await promiseProfile); // Прописать замену с await
-
+    
+    sessionStorage.setItem('userName', this.tokenDataProfile.data.user.name);
+    sessionStorage.setItem('userRole', this.tokenDataProfile.data.user.role);
+    sessionStorage.setItem('userEmail', this.tokenDataProfile.data.user.email);
+    sessionStorage.setItem('userID', this.tokenDataProfile.data.user.id);
     this.guardUser();
     this.guardAdmin();
     return this.userResolveService.takeDataProfile(await promiseProfile), this.userResolveService.tokenUser(await promiseToken);
