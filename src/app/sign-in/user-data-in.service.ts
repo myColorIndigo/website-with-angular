@@ -41,14 +41,14 @@ export class UserDataInService {
   };
 
   guardUser() {
-    if (this.tokenDataProfile !== undefined) {
+    if (sessionStorage.getItem('userID') !== null) {
       return true;
     }
     return false;
   }
 
   guardAdmin() {
-    if (this.tokenDataProfile.data.user.role === 'admin') {
+    if (sessionStorage.getItem('userRole') === 'admin') {
       return true;
     }
     return false;
