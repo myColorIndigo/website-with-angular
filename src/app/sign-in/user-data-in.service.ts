@@ -35,6 +35,9 @@ export class UserDataInService {
     sessionStorage.setItem('userRole', this.tokenDataProfile.data.user.role);
     sessionStorage.setItem('userEmail', this.tokenDataProfile.data.user.email);
     sessionStorage.setItem('userID', this.tokenDataProfile.data.user.id);
+    if (this.tokenDataProfile.data.user.role === 'admin') { // Возможно не стоит этот токен админа передавать в сторейдж
+      sessionStorage.setItem('adminToken', this.statusToken.token);
+    }
     this.guardUser();
     this.guardAdmin();
     return this.userResolveService.takeDataProfile(await promiseProfile), this.userResolveService.tokenUser(await promiseToken);
