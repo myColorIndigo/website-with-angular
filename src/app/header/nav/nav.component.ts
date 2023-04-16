@@ -13,11 +13,29 @@ export class NavComponent implements OnInit {
 
   constructor (private readonly resolveService: UserResolveService) { }
   
-  ngOnInit() {
+  ngOnInit() { // Надо будет рефакторинг устроить:
+
+    // Проверка на пользователя:
+    if(sessionStorage.getItem('userID') !== null) {
+      // Изменения при авторизации сюда
+        if(sessionStorage.getItem('userRole') === 'admin') {
+          this.usersPage = true;
+          console.log(sessionStorage.getItem('userRole'));
+        } else {
+          this.usersPage = false;
+        }
+      this.userIconNav = true;
+    } else {
+      this.userIconNav = false;
+    }
+    console.log(sessionStorage.getItem('userID') );
+    //sessionStorage.clear();
+
+    // Для моментального обновления при авторизации:
     this.resolveService.userProfile$.subscribe(
       value => { 
         if(value.data.user !== undefined) {
-          // Изменения при авторизации сюда
+          
             if(value.data.user.role === 'admin') {
               this.usersPage = true;
               console.log(value);
