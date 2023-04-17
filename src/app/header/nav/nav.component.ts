@@ -45,4 +45,10 @@ export class NavComponent implements OnInit {
       },
     );
   }
+
+  signOut() {
+    this.userIconNav = false;
+    sessionStorage.clear();
+    // Команда при клике сбрасывает все стореджи и редиректит пользователя на главную
+  }
 }
