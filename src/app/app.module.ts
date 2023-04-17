@@ -27,6 +27,7 @@ import { ServersInfoService } from './main/servers-info.service';
 import { ServerCardComponent } from './main/server-card/server-card.component';
 import { AdminGuard } from './admin-page/admin.guard';
 import { UserGuard } from './sign-in/user.guard';
+import { AddServerCardComponent } from './main/server-card/add-server-card/add-server-card.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { UserGuard } from './sign-in/user.guard';
     SettingsComponent,
     SidebarComponent,
     ServerCardComponent,
+    AddServerCardComponent,
   ],
   imports: [
     BrowserModule,
