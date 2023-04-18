@@ -10,6 +10,7 @@ export class NavComponent implements OnInit {
   public isShown = false;
   public userIconNav = false;
   public usersPage = false;
+  public bannerShown = false;
 
   constructor (private readonly resolveService: UserResolveService) { }
   
@@ -40,6 +41,7 @@ export class NavComponent implements OnInit {
               this.usersPage = true;
               //console.log(value);
             }
+          this.bannerShown = true;
           this.userIconNav = true;
         } 
       },
