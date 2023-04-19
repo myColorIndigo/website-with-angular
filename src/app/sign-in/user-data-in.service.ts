@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../user';
 import { UserResolveService } from './user-resolve.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class UserDataInService {
   private statusToken: any;
   private tokenDataProfile: any;
 
-  constructor(private _http: HttpClient, private readonly userResolveService: UserResolveService){ }
+  constructor(private _http: HttpClient, private router: Router, private readonly userResolveService: UserResolveService){ }
 
   async postData(user: User){
     
@@ -40,6 +41,9 @@ export class UserDataInService {
     }
     this.guardUser();
     this.guardAdmin();
+
+    this.router.navigate(['']); // Переход на другую страницу, мб не совсем правильно и придется переделать 
+  
     return this.userResolveService.takeDataProfile(await promiseProfile), this.userResolveService.tokenUser(await promiseToken);
   };
 
