@@ -12,7 +12,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { AdminGuard } from './admin-page/admin.guard';
 import { UserGuard } from './sign-in/user.guard';
 
-const routes: Routes = [
+const routes: Routes = [ // Гарды должны нормально редаректить на главную
   { path: '', component: MainComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'registration', component: RegistrationComponent },
