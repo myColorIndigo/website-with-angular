@@ -51,11 +51,13 @@ export class UserDataInService {
     if (sessionStorage.getItem('userID') !== null) {
       return true;
     }
+    this.router.navigate(['sign-in']);
     return false;
   }
 
   guardSignIn() {
     if (sessionStorage.getItem('userID') !== null) {
+      this.router.navigate(['']);
       return false;
     }
     return true;
@@ -65,6 +67,7 @@ export class UserDataInService {
     if (sessionStorage.getItem('userRole') === 'admin') {
       return true;
     }
+    this.router.navigate(['sign-in']);
     return false;
   }
 
