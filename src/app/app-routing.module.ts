@@ -11,11 +11,15 @@ import { SettingsComponent } from './settings/settings.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AdminGuard } from './admin-page/admin.guard';
 import { UserGuard } from './sign-in/user.guard';
+import { SignInGuard } from './sign-in/sign-in.guard';
 
 const routes: Routes = [ // Гарды должны нормально редаректить на главную
   { path: '', component: MainComponent },
-  { path: 'sign-in', component: SignInComponent },
   { path: 'registration', component: RegistrationComponent },
+  
+  { path: 'sign-in',
+    canActivate: [SignInGuard],
+    component: SignInComponent },
 
   { path: 'profile',
     canActivate: [UserGuard],
