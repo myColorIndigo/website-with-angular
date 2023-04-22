@@ -54,6 +54,13 @@ export class UserDataInService {
     return false;
   }
 
+  guardSignIn() {
+    if (sessionStorage.getItem('userID') !== null) {
+      return false;
+    }
+    return true;
+  }
+
   guardAdmin() {
     if (sessionStorage.getItem('userRole') === 'admin') {
       return true;
