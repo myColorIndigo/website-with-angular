@@ -18,7 +18,7 @@ export class UserDataInService {
     
     const body = {email: user.email, password: user.password};
 
-    let promiseToken = new Promise((resolve) => {
+    let promiseToken = new Promise((resolve) => { // Написать ответ запроса с ошибкой авторизации как отдельную функцию для вывода в компонент
       this._http.post('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/auth/login', body).subscribe( statusToken => resolve(this.statusToken = statusToken));
     });
 

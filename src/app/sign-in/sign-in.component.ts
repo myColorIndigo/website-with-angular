@@ -11,7 +11,7 @@ export class SignInComponent {
 
   constructor (private _data: UserDataInService) {}
 
-  onSubmit(f: NgForm) {
+  onSubmit(f: NgForm) { // Добавить аналог ответа ошибку и вывод на страницу
     console.log(f.value);  // { first: '', last: '' }
     console.log(f.valid);  // false
     this._data.postData(f.value);
