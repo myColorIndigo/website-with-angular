@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-server-card.component.css']
 })
 export class AddServerCardComponent {
-
+  // Сделать оформление для редактора добавления шаблона
 }
