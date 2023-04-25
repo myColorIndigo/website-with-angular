@@ -12,6 +12,8 @@ export class UserDataInService {
   private statusToken: any;
   private tokenDataProfile: any;
 
+  public statusError: any;
+
   constructor(private _http: HttpClient, private router: Router, private readonly userResolveService: UserResolveService){ }
 
   async postData(user: User){
@@ -19,11 +21,17 @@ export class UserDataInService {
     const body = {email: user.email, password: user.password};
 
     let promiseToken = new Promise((resolve) => { // Написать ответ запроса с ошибкой авторизации как отдельную функцию для вывода в компонент
-      this._http.post('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/auth/login', body).subscribe( statusToken => resolve(this.statusToken = statusToken));
+      this._http.post('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/auth/login', body).subscribe({
+        next: (statusToken) => resolve(this.statusToken = statusToken),
+        error: (error) => resolve(this.statusError = error)
+      });
     });
-
+    
     console.log(await promiseToken); // Прописать замену с await
 
+    if (this.statusError !== undefined) {
+      return this.messageError();
+    }
     const tokenUser = 'Bearer ' + this.statusToken?.token;
 
     let promiseProfile = new Promise((resolve) => {
@@ -46,6 +54,10 @@ export class UserDataInService {
   
     return this.userResolveService.takeDataProfile(await promiseProfile), this.userResolveService.tokenUser(await promiseToken);
   };
+
+  messageError() {
+    return this.statusError;
+  }
 
   guardUser() {
     if (sessionStorage.getItem('userID') !== null) {
