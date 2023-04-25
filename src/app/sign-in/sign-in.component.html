@@ -30,13 +30,14 @@
           <a routerLink="in-work" class="font-medium text-indigo-600 hover:text-indigo-500">start your 14-day free trial</a>
         </p>
       </div>
-      <form class="mt-8 space-y-6" #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <form class="mt-8 space-y-6" #f="ngForm" novalidate (ngSubmit)="onSubmit(f)">
         <input type="hidden" name="remember" value="true">
         <div class="-space-y-px rounded-md shadow-sm">
           <div>
             <label for="email-address" class="sr-only">Email address</label>
-            <input id="email-address" ngModel name="email" type="email" autocomplete="email" required pattern="[a-zA-Z_]+@[a-zA-Z_]+?.[a-zA-Z]{2,3}" class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Email address">
-            <!-- Доработать тему с валидацией и формами <div [hidden]="email.valid || email.untouched" class="alert alert-danger">Некорректный email</div>-->
+            <input id="email-address" ngModel name="email" type="email" autocomplete="email" required email class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Email address">
+            <!-- Переделать весь ngForm на ngModel для каждого элемента для валидации нормальной -->
+            <div [hidden]="f.valid || f.untouched" class="">Некорректный email</div>
           </div>
           <div>
             <label for="password" class="sr-only">Password</label>

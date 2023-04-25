@@ -14,6 +14,9 @@ export class SignInComponent {
   onSubmit(f: NgForm) { // Добавить аналог ответа ошибку и вывод на страницу
     console.log(f.value);  // { first: '', last: '' }
     console.log(f.valid);  // false
+    if (f.valid === false) {
+      
+    }
     this._data.postData(f.value);
   }
 }
