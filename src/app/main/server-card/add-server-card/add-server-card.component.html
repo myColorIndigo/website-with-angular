@@ -2,9 +2,9 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8 py-4 lg:py-6 bg-line-gray">
         <div class="flex flex-row justify-center px-8 md:px-28">
             
-            <input type="text" class="w-full rounded" placeholder=" id: 192.168.l.l">
+            <input (keydown.enter)="addServer()" type="text" id="serverID" class="w-full rounded px-2" placeholder="id: 192.168.l.l">
 
-            <button class="rounded-md bg-based-orange ml-6 md:ml-14 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-dline-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-based-orange">Add</button>
+            <button (click)="addServer()" class="rounded-md bg-based-orange ml-6 md:ml-14 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-dline-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-based-orange">Add</button>
         </div>
     </div>
 </div>
