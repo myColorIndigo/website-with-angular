@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserDataInService } from './user-data-in.service';
 import { NgForm } from '@angular/forms';
 
@@ -7,7 +7,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent {
 
   public messageError: any;
   public blockError: boolean = false;
@@ -18,20 +18,15 @@ export class SignInComponent implements OnInit {
     console.log(f.value);  // { first: '', last: '' }
     console.log(f.valid);  // false
     // console.log(f.controls['email'].valid);
-    if (f.valid === false) {
-
-    }
-    // this._data.statusError = undefined;
-    this._data.postData(f.value);
+    // if (f.valid === false) {}
+    this.blockError = false;
+    this._data.postData(f.value).subscribe({
+      error: (error) => this.errorShown(error)
+    });
   }
 
-  ngOnInit() {
-    this._data.messageError();
-    console.log(this._data.statusError);
-    if (this._data.statusError !== undefined) {
-      console.log(this._data.statusError);
-      this.messageError = this._data.statusError?.error.message;
-      this.blockError = true;
-    }
+  errorShown(_error: any) {
+    this.messageError = _error.error.message;
+    this.blockError = true;
   }
 }
