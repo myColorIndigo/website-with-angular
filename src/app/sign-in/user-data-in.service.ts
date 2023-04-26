@@ -16,29 +16,36 @@ export class UserDataInService {
 
   constructor(private _http: HttpClient, private router: Router, private readonly userResolveService: UserResolveService){ }
 
-  async postData(user: User){
-    
+  postData(user: User) {
+
     const body = {email: user.email, password: user.password};
 
-    let promiseToken = new Promise((resolve) => { // Написать ответ запроса с ошибкой авторизации как отдельную функцию для вывода в компонент
-      this._http.post('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/auth/login', body).subscribe({
-        next: (statusToken) => resolve(this.statusToken = statusToken),
-        error: (error) => resolve(this.statusError = error)
-      });
-    });
-    
-    console.log(await promiseToken); // Прописать замену с await
+    const tokenUser = this._http.post('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/auth/login', body);
 
-    if (this.statusError !== undefined) {
-      return this.messageError();
-    }
+    return tokenUser.subscribe({
+      next: (statusToken) => {
+        this.statusToken = statusToken;
+        this.getUser();
+      },
+      error: (error) => this.statusError = error
+    });
+  }
+  
+  getUser() {
+    console.log(this.statusToken);
+
     const tokenUser = 'Bearer ' + this.statusToken?.token;
 
-    let promiseProfile = new Promise((resolve) => {
-      this._http.get('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/users/me', { headers: new HttpHeaders({ 'Authorization': tokenUser })}).subscribe( tokenDataProfile => resolve(this.tokenDataProfile = tokenDataProfile));
+    const getProfileUser = this._http.get('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/users/me', { headers: new HttpHeaders({ 'Authorization': tokenUser })})
+    
+    return getProfileUser.subscribe( tokenDataProfile => {
+      this.tokenDataProfile = tokenDataProfile;
+      this.resolveProfileAndToken();
     });
-
-    console.log(await promiseProfile); // Прописать замену с await
+  }
+  
+  resolveProfileAndToken() {
+    console.log(this.tokenDataProfile); // Возможно раздробить код ниже на конкретные функции 
     
     sessionStorage.setItem('userName', this.tokenDataProfile.data.user.name);
     sessionStorage.setItem('userRole', this.tokenDataProfile.data.user.role);
@@ -52,7 +59,7 @@ export class UserDataInService {
 
     this.router.navigate(['']); // Переход на другую страницу, мб не совсем правильно и придется переделать 
   
-    return this.userResolveService.takeDataProfile(await promiseProfile), this.userResolveService.tokenUser(await promiseToken);
+    return this.userResolveService.takeDataProfile(this.tokenDataProfile), this.userResolveService.tokenUser(this.statusToken);
   };
 
   messageError() {
