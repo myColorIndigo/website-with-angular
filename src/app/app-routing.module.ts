@@ -12,6 +12,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { AdminGuard } from './admin-page/admin.guard';
 import { UserGuard } from './sign-in/user.guard';
 import { SignInGuard } from './sign-in/sign-in.guard';
+import { AddServerCardComponent } from './main/server-card/add-server-card/add-server-card.component';
 
 const routes: Routes = [ // Гарды должны нормально редаректить на главную
   { path: '', component: MainComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [ // Гарды должны нормально реда�
   { path: 'nav-menu', component: NavComponent },
   { path: 'in-work', component: InWorkComponent },
   { path: 'server/:serverID', component: ServerCardComponent },
+  { path: 'add-server', component: AddServerCardComponent },
 ];
 
 @NgModule({
