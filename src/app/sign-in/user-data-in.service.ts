@@ -12,8 +12,6 @@ export class UserDataInService {
   private statusToken: any;
   private tokenDataProfile: any;
 
-  public statusError: any;
-
   constructor(private _http: HttpClient, private router: Router, private readonly userResolveService: UserResolveService){ }
 
   postData(user: User) {
@@ -22,13 +20,13 @@ export class UserDataInService {
 
     const tokenUser = this._http.post('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/auth/login', body);
 
-    return tokenUser.subscribe({
+    tokenUser.subscribe({
       next: (statusToken) => {
         this.statusToken = statusToken;
         this.getUser();
-      },
-      error: (error) => this.statusError = error
-    });
+      }});
+
+    return tokenUser;
   }
   
   getUser() {
@@ -61,10 +59,6 @@ export class UserDataInService {
   
     return this.userResolveService.takeDataProfile(this.tokenDataProfile), this.userResolveService.tokenUser(this.statusToken);
   };
-
-  messageError() {
-    return this.statusError;
-  }
 
   guardUser() {
     if (sessionStorage.getItem('userID') !== null) {
