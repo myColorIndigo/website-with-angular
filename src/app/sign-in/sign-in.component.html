@@ -37,9 +37,9 @@
             <label for="email-address" class="sr-only">Email address</label>
             <input id="email-address" name="email" ngModel required email type="email" autocomplete="email" class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Email address">
             <!-- Возможно переделать весь ngForm на ngModel для каждого элемента для валидации и переделать выпадающее окно при некорректном емейл -->
-            <div [hidden]="f.valid || f.untouched" class="">Incorrect email</div>
-            <div *ngIf="blockError" class="">{{messageError}}</div>
           </div>
+          <div [hidden]="f.valid || f.untouched" class="relative w-full appearance-none rounded-none bg-based-gray border border-gray-300 shadow-inner px-3 py-2 text-sm text-gray-900">Incorrect email</div>
+          <div *ngIf="blockError" class="relative block w-full appearance-none rounded-none bg-based-gray border border-gray-300 shadow-inner px-3 py-2 text-sm text-gray-900">{{messageError}}</div>
           <div>
             <label for="password" class="sr-only">Password</label>
             <input id="password" name="password" ngModel required type="password" autocomplete="current-password" class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Password">
