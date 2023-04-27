@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { AddServerService } from './add-server.service';
 
 @Component({
   selector: 'app-add-server-card',
@@ -8,11 +8,11 @@ import { fromEvent } from 'rxjs';
 })
 export class AddServerCardComponent {
   
-  constructor() {}
+  constructor(private _addServer: AddServerService) {}
 
   addServer() {
     const myServer = document.getElementById('serverID') as HTMLInputElement;
     // console.log(myServer.value);
-
+    this._addServer.postServer(myServer.value);
   }
 }
