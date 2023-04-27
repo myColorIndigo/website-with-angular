@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class AddServerService {
 
   constructor() { }
+
+  postServer(server: any) {
+    console.log(server);
+  }
 }
