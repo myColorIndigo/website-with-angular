@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  public infoServer: string = 'Some popular server';
+
+  constructor() {}
+
 }
