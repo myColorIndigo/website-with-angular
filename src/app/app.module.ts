@@ -28,6 +28,7 @@ import { ServerCardComponent } from './main/server-card/server-card.component';
 import { AdminGuard } from './admin-page/admin.guard';
 import { UserGuard } from './sign-in/user.guard';
 import { AddServerCardComponent } from './main/server-card/add-server-card/add-server-card.component';
+import { AddServerService } from './main/server-card/add-server-card/add-server.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { AddServerCardComponent } from './main/server-card/add-server-card/add-s
     FormsModule,
     AppRoutingModule
   ],
-  providers: [VersionService, UserDataInService, UserResolveService, ServersInfoService, UserGuard, AdminGuard],
+  providers: [VersionService, UserDataInService, UserResolveService, ServersInfoService, AddServerService,  UserGuard, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
