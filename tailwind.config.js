@@ -28,7 +28,6 @@ module.exports = {
       },
       backgroundImage: {
         'de_dust2': "url('app/de_dust2_logo.png')",
-        'mainPicture': "url('app/cs2main.png')",
       },
       animation: {
         'dropdownMenuIn': 'dropdownMenuIn ease-out 0.2s',
