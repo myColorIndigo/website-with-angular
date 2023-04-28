@@ -5,29 +5,29 @@
         <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
         <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Welcome!<br>Please Signup here</h2>
       </div>
-      <form class="mt-8 space-y-6" action="#" method="POST">
+      <form #registrationForm="ngForm" novalidate class="mt-8 space-y-6">
         <input type="hidden" name="remember" value="true">
         <div class="flex flex-col gap-2 -space-y-px rounded-md shadow-sm">
           <div>
             <label for="name" class="sr-only">Name</label>
-            <input id="name" name="email" [(ngModel)]="user.name" #name="ngModel" required type="name" autocomplete="name" required class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Name">
+            <input id="name" name="name" ngModel required pattern="[A-Za-z]{3,15}" type="name" autocomplete="name" required class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Name">
           </div>
           <div>
             <label for="email-address" class="sr-only">Email address</label>
-            <input id="email-address" name="email" [(ngModel)]="user.email" #email="ngModel" required type="email" autocomplete="email" required class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Email address">
+            <input id="email-address" name="email" ngModel required pattern="[a-zA-Z_]+@[a-zA-Z_]+?.[a-zA-Z]{2,3}" type="email" autocomplete="email" required class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Email address">
           </div>
           <div>
             <label for="password" class="sr-only">Password</label>
-            <input id="password" name="password" [(ngModel)]="user.password" #password="ngModel" required type="password" autocomplete="current-password" required class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Password">
-          </div>
+            <input id="password" name="password" ngModel required type="password" autocomplete="current-password" required class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Password">
+          </div> <!--pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" Вариант паттерна для пароля, который должен содержать 8 или более символов, имеющих по крайней мере одно число, и одну букву верхнего и нижнего регистра-->
           <div>
             <label for="repeat-password" class="sr-only">Repeat-password</label>
-            <input id="repeat-password" name="repeatPassword" [(ngModel)]="user.repeatPassword" #repeatPassword="ngModel" required type="password" autocomplete="current-password" required class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Repeat-password">
+            <input id="repeat-password" name="repeatPassword" ngModel required type="password" autocomplete="current-password" required class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Repeat-password">
           </div>
         </div>
   
         <div>
-          <button (click)="addUser()" type="submit" class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+          <button (click)="addUser(registrationForm)" type="submit" class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
             <span class="absolute inset-y-0 left-0 flex items-center pl-3">
               <!-- Heroicon name: mini/lock-closed -->
               <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

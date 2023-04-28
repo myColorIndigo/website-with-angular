@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-
-export class User {
-  name!: string;
-  email!: string;
-  password!: string;
-  repeatPassword!: string;
-}
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
@@ -14,14 +8,12 @@ export class User {
 })
 export class RegistrationComponent {
 
-  user: User = new User();
-
   constructor() {}
   
-  addUser() {
-    if(this.user.password === this.user.repeatPassword) {
-      console.log(this.user);
-
-    }
+  addUser(form: NgForm) {
+    console.log(form);
+    console.log(form.controls['name'].valid);
+    console.log(form.controls['name'].value);
+    //console.log(form.controls['email'].valid);
   }
 }
