@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { RegistrationService } from './registration.service';
 
 @Component({
   selector: 'app-registration',
@@ -12,7 +13,7 @@ export class RegistrationComponent {
   public emailInvalid: boolean = false;
   public repeatPasswordInvalid: boolean = false;
 
-  constructor() {}
+  constructor(private _http: RegistrationService) {}
   
   addUser(form: NgForm) {
     //console.log(form);
@@ -37,7 +38,7 @@ export class RegistrationComponent {
     }
 
     if (form.valid === true) {
-      return console.log('good!');
+      return this._http.postData(form.value);
     }
   }
 }
