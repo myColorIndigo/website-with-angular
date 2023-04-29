@@ -17,6 +17,6 @@ export class RegistrationService {
 
     const body = {name: user.name, email: user.email, password: user.password};
 
-    return console.log(body);
+    return console.log(body); // Заменить на передачу данных на сервер и добавить гарды 
   }
 }
