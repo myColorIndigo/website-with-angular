@@ -27,7 +27,7 @@ export class NavComponent implements OnInit {
         }
       this.userIconNav = true;
     } else {
-      this.userIconNav = false;
+      this.userIconNav = false; // Замена на иконку, если без сервера
     }
     //console.log(sessionStorage.getItem('userID') );
     //sessionStorage.clear();
@@ -46,6 +46,8 @@ export class NavComponent implements OnInit {
         } 
       },
     );
+    // Добавить ниже клики на html документ, вне выпадающего списка, для сворачивания последнего
+
   }
 
   signOut() {
