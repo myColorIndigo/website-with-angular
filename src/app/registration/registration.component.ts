@@ -30,7 +30,7 @@ export class RegistrationComponent {
     } else {
       this.emailInvalid = true;
     }
-
+    // Добавить продуманную валидацию для пароля
     if (form.controls['password'].value === form.controls['repeatPassword'].value) {
       this.repeatPasswordInvalid = false;
     } else {
