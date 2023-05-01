@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, fromEvent, subscribeOn } from 'rxjs';
 import { UserResolveService } from 'src/app/sign-in/user-resolve.service';
 
 @Component({
@@ -47,16 +48,14 @@ export class NavComponent implements OnInit {
       },
     );
     // Добавить ниже клики на html документ, вне выпадающего списка, для сворачивания последнего
-    const myDropdownMenu = document.getElementById('dropdownMenu') as HTMLElement; // Какая то залупа с необходимостью прочитать свойство null
     
-    myDropdownMenu.addEventListener('click', function (e) {
-      console.log(e);
+    fromEvent(document.body, 'click').subscribe((e: Event) => {
+      let myDropdownMenu = document.getElementById('dropdownMenu') as HTMLElement; // Какая то залупа с необходимостью прочитать свойство null
+      if (e.target !== myDropdownMenu) {
+        console.log(e.target); // Хотябы уже видит элемент правильно
+      }
     });
-    
-    document.onclick = function (e) {
-      console.log(e.target);
-      
-    }
+
   }
 
   signOut() {
