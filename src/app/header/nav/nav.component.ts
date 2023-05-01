@@ -27,7 +27,7 @@ export class NavComponent implements OnInit {
         }
       this.userIconNav = true;
     } else {
-      this.userIconNav = false; // Замена на иконку, если без сервера
+      this.userIconNav = true; // Замена на иконку, если без сервера
     }
     //console.log(sessionStorage.getItem('userID') );
     //sessionStorage.clear();
@@ -47,7 +47,16 @@ export class NavComponent implements OnInit {
       },
     );
     // Добавить ниже клики на html документ, вне выпадающего списка, для сворачивания последнего
-
+    const myDropdownMenu = document.getElementById('dropdownMenu') as HTMLElement; // Какая то залупа с необходимостью прочитать свойство null
+    
+    myDropdownMenu.addEventListener('click', function (e) {
+      console.log(e);
+    });
+    
+    document.onclick = function (e) {
+      console.log(e.target);
+      
+    }
   }
 
   signOut() {
