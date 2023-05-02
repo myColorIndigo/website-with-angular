@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, fromEvent, subscribeOn } from 'rxjs';
+import { fromEvent } from 'rxjs';
 import { UserResolveService } from 'src/app/sign-in/user-resolve.service';
 
 @Component({
@@ -47,12 +47,14 @@ export class NavComponent implements OnInit {
         } 
       },
     );
-    // Добавить ниже клики на html документ, вне выпадающего списка, для сворачивания последнего
-    
+      
+    // Простой пункт сворачивания меню при клике вне него
     fromEvent(document.body, 'click').subscribe((e: Event) => {
-      let myDropdownMenu = document.getElementById('dropdownMenu') as HTMLElement; // Какая то залупа с необходимостью прочитать свойство null
+      let myDropdownMenu = document.getElementById('dropdownMenu') as HTMLElement;
+      // console.log(myDropdownMenu.children);
       if (e.target !== myDropdownMenu) {
-        console.log(e.target); // Хотябы уже видит элемент правильно
+        this.isShown = false;
+        // console.log(e.target);
       }
     });
 
