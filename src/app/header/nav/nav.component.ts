@@ -28,7 +28,7 @@ export class NavComponent implements OnInit {
         }
       this.userIconNav = true;
     } else {
-      this.userIconNav = true; // Замена на иконку, если без сервера
+      this.userIconNav = false; // Замена на иконку, если без сервера
     }
     //console.log(sessionStorage.getItem('userID') );
     //sessionStorage.clear();
