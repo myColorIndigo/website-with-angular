@@ -60,6 +60,17 @@ export class UserDataInService {
     return this.userResolveService.takeDataProfile(this.tokenDataProfile), this.userResolveService.tokenUser(this.statusToken);
   };
 
+  // Функция для запроса фейкового аватара:
+  takeAvatar() {
+    let dataAvatar: any = [];
+    const f = this._http.get('https://jsonplaceholder.typicode.com/photos/2').subscribe(value => {
+      dataAvatar = value;
+      console.log(dataAvatar.thumbnailUrl);
+      sessionStorage.setItem('userAvatar', dataAvatar.thumbnailUrl);
+    });
+  }
+
+  // Гарды:
   guardUser() {
     if (sessionStorage.getItem('userID') !== null) {
       return true;
