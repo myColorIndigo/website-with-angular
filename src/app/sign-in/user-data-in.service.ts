@@ -63,7 +63,7 @@ export class UserDataInService {
   // Функция для запроса фейкового аватара:
   takeAvatar() {
     let dataAvatar: any = [];
-    const f = this._http.get('https://jsonplaceholder.typicode.com/photos/2').subscribe(value => {
+    this._http.get('https://jsonplaceholder.typicode.com/photos/3').subscribe(value => { // Для изменения аватара юзера можно поменять последнюю цифру url запроса
       dataAvatar = value;
       console.log(dataAvatar.thumbnailUrl);
       sessionStorage.setItem('userAvatar', dataAvatar.thumbnailUrl);
