@@ -20,6 +20,8 @@ export class SignInComponent {
     // console.log(f.controls['email'].valid);
     // if (f.valid === false) {}
     this.blockError = false;
+    // Функция для фейкового запроса аватара:
+    this._data.takeAvatar();
     this._data.postData(f.value).subscribe({
       error: (error) => this.errorShown(error)
     });
