@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { Observable, fromEvent } from 'rxjs';
 import { UserResolveService } from 'src/app/sign-in/user-resolve.service';
 
 @Component({
@@ -12,6 +12,8 @@ export class NavComponent implements OnInit {
   public userIconNav = false;
   public usersPage = false;
   public bannerShown = false;
+
+  public imgAvatar: any = '';
 
   constructor (private readonly resolveService: UserResolveService) { }
   
@@ -26,9 +28,13 @@ export class NavComponent implements OnInit {
         } else {
           this.usersPage = false;
         }
+
       this.userIconNav = true;
     } else {
-      this.userIconNav = false; // Замена на иконку, если без сервера
+      // Первая строчка хранилище фейкового аватара, которая должна быть выше для реального запроса:  
+      this.imgAvatar = sessionStorage.getItem('userAvatar');
+
+      this.userIconNav = true; // Замена на иконку, если без сервера
     }
     //console.log(sessionStorage.getItem('userID') );
     //sessionStorage.clear();
