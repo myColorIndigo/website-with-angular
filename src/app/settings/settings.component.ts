@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { SettingsService } from './settings.service';
 
 @Component({
   selector: 'app-settings',
@@ -14,16 +15,21 @@ export class SettingsComponent implements OnInit {
 
   public imgAvatar: any = '';
 
-  constructor() {}
+  constructor(private _data: SettingsService) {}
 
   onSubmit(profileForm: NgForm) {
     const selectedFile = document.getElementById('file-upload') as HTMLInputElement;
     
-    console.log(profileForm);
+    // console.log(profileForm);
     
     if (selectedFile.files?.length !== 0 && selectedFile.files !== null) {
-      console.log(selectedFile.files[0]);
-      
+      // console.log(selectedFile.files[0]);
+      profileForm.value['file-upload'] = selectedFile.files[0];
+      console.log(profileForm);
+    }
+
+    if (profileForm.valid) {
+      this._data.postData(profileForm.value);
     }
   }
 
