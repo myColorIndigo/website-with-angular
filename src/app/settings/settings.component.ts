@@ -16,14 +16,16 @@ export class SettingsComponent implements OnInit {
   constructor(private _data: SettingsService) {}
 
   onSubmit(profileForm: NgForm) {
-    const selectedFile = document.getElementById('file-upload') as HTMLInputElement;
     
-    // console.log(profileForm);
-    
-    if (selectedFile.files?.length !== 0 && selectedFile.files !== null) {
-      // console.log(selectedFile.files[0]);
-      profileForm.value['file-upload'] = selectedFile.files[0];
-      console.log(profileForm);
+    if (this.imgAvatar !== '' || this.uploadFileAvatar() !== false) { // Переделать под нормальную форму для передачи аватара
+      if (this.imgAvatar !== '') { // не передает обновленные данные дропбокса сюда 
+        profileForm.value['file-upload'] = this.imgAvatar;  
+      }
+      
+      if (this.uploadFileAvatar() !== false) {
+        profileForm.value['file-upload'] = this.uploadFileAvatar();
+      }
+      console.log(profileForm.value);
     }
 
     if (profileForm.valid === true) { // Переделать условия, тк валидация всегда true
@@ -44,7 +46,7 @@ export class SettingsComponent implements OnInit {
   uploadFileAvatar() {
     const selectedFile = document.getElementById('file-upload') as HTMLInputElement;
     if (selectedFile.files?.length !== 0 && selectedFile.files !== null) {
-      console.log(selectedFile.files[0]);
+      // console.log(selectedFile.files[0]);
       return selectedFile.files[0];
     }
     return false;
