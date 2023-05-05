@@ -9,6 +9,6 @@ export class SettingsService {
   constructor(private _http: HttpClient) { }
 
   postData(valueData: any) {
-    this._http.post('https://jsonplaceholder.typicode.com/posts', valueData).subscribe(value => console.log(value));
+    return this._http.post<any>('https://jsonplaceholder.typicode.com/posts', valueData);
   }
 }
