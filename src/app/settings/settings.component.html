@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="mt-5 md:col-span-2 md:mt-0">
-            <form #profileForm="ngForm" novalidate (ngSubmit)="onSubmit(profileForm)">
+            <form #profileForm="ngForm" novalidate (ngSubmit)="profileChange(profileForm)">
               <div class="shadow sm:overflow-hidden sm:rounded-md">
                 <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
                   <div class="grid grid-cols-3 gap-6">
@@ -98,7 +98,7 @@
             </div>
           </div>
           <div class="mt-5 md:col-span-2 md:mt-0">
-            <form action="#" method="POST">
+            <form  #personalInfoForm="ngForm" novalidate (ngSubmit)="personalInfoChange(personalInfoForm)">
               <div class="overflow-hidden shadow sm:rounded-md">
                 <div class="bg-white px-4 py-5 sm:p-6">
                   <div class="grid grid-cols-6 gap-6">
@@ -171,7 +171,7 @@
             </div>
           </div>
           <div class="mt-5 md:col-span-2 md:mt-0">
-            <form action="#" method="POST">
+            <form  #notificationsForm="ngForm" novalidate (ngSubmit)="notificationsChange(notificationsForm)">
               <div class="overflow-hidden shadow sm:rounded-md">
                 <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
                   <fieldset>
