@@ -15,7 +15,8 @@ export class SettingsComponent implements OnInit {
 
   constructor(private _data: SettingsService) {}
 
-  onSubmit(profileForm: NgForm) {
+  // Форма профиля:
+  profileChange(profileForm: NgForm) {
     
     if (this.imgAvatar !== '' || this.uploadFileAvatar() !== false) { // Переделать под нормальную форму для передачи аватара
       if (this.imgAvatar !== '') { // не передает обновленные данные дропбокса сюда 
@@ -29,11 +30,27 @@ export class SettingsComponent implements OnInit {
     }
 
     if (profileForm.valid === true) { // Переделать условия, тк валидация всегда true
-      this._data.postData(profileForm.value).subscribe(value => {
+      this._data.postDataProfile(profileForm.value).subscribe(value => {
         console.log(value);
         // sessionStorage.setItem('userAvatar', value); 
       }); // Возможно переделать получение данных для замены ссылки на актуальный аватар
     }
+  }
+
+  // Форма персональной информации:
+  personalInfoChange(personalInfoForm: NgForm) {
+    console.log(personalInfoForm);
+    this._data.postDataPersonalInfo(personalInfoForm.value).subscribe(value => {
+      console.log(value);
+    });
+  }
+
+  // Форма уведомлений:
+  notificationsChange(notificationsForm: NgForm) {
+    console.log(notificationsForm);
+    this._data.postDataNotifications(notificationsForm.value).subscribe(value => {
+      console.log(value);
+    });
   }
 
   ngOnInit() { // Получение фейкового аватара из хранилища:
@@ -53,7 +70,6 @@ export class SettingsComponent implements OnInit {
   }
 
   // Функции под дропбокс:
-
   dropboxAvatar() {
     const dropbox = document.getElementById("dropbox") as HTMLElement;
     if (dropbox !== null) {
