@@ -7,29 +7,29 @@ import { UserResolveService } from '../sign-in/user-resolve.service';
 })
 export class AdminUsersService {
 
-  public statusToken: any;
+  public statusToken: any; // Замена на private
   public tokenDataProfile: any;
 
   constructor(private _http: HttpClient, private readonly resolveService: UserResolveService) { }
 
   getUsers() {
     this.isAdmin();
-    let tokenUser = 'Bearer ' + this.statusToken?.token;
+    let tokenUser = 'Bearer ' + this.statusToken?.data.token;
     
-    if (sessionStorage.getItem('userRole') === 'admin') {
+    if (sessionStorage.getItem('userRole') === '1') {
       //console.log(sessionStorage.getItem('adminToken'));
       tokenUser = 'Bearer ' + sessionStorage.getItem('adminToken');
     }
 
-    return this._http.get<any>('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/admin/users', { headers: new HttpHeaders({ 'Authorization': tokenUser })});
+    return this._http.get<any>('https://hasu.monster/api/users', { headers: new HttpHeaders({ 'Authorization': tokenUser })});
 
   }
 
   isAdmin() {
     this.resolveService.userProfile$.subscribe(
       value => {
-        if (value.data.user !== undefined) {
-          if (value.data.user.role === 'admin') {
+        if (value !== undefined) {
+          if (value.is_admin === 1) {
             this.tokenDataProfile = value;
             this.resolveService.token$.subscribe(token => this.statusToken = token);
           }

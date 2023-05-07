@@ -13,7 +13,7 @@ export class AdminPageComponent implements OnInit {
   constructor(private _users: AdminUsersService) {}
 
   ngOnInit() {
-    this._users.getUsers().subscribe(userData => this.users = userData.data.users); 
+    this._users.getUsers().subscribe(userData => this.users = userData); 
   }
 
 }
