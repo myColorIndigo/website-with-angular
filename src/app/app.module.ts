@@ -29,6 +29,7 @@ import { UserResolveService } from './sign-in/user-resolve.service';
 import { ServersInfoService } from './main/servers-info.service';
 import { AddServerService } from './main/server-card/add-server-card/add-server.service';
 import { RegistrationService } from './registration/registration.service';
+import { NavService } from './header/nav/nav.service';
 
 import { AdminGuard } from './admin-page/admin.guard';
 import { UserGuard } from './sign-in/user.guard';
@@ -58,7 +59,7 @@ import { UserGuard } from './sign-in/user.guard';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [VersionService, UserDataInService, UserResolveService, ServersInfoService, AddServerService, RegistrationService,  UserGuard, AdminGuard],
+  providers: [VersionService, UserDataInService, UserResolveService, ServersInfoService, AddServerService, RegistrationService, NavService, UserGuard, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
