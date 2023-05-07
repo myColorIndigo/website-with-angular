@@ -10,10 +10,10 @@ export class UserCardComponent implements OnInit {
   @Input() user: any;
 
   constructor() {
-    console.log('constructor: ', this.user);
+    // console.log('constructor: ', this.user);
   }
 
   ngOnInit(){
-    console.log('ngOnInit: ', this.user);
+    // console.log('ngOnInit: ', this.user);
   }
 }
