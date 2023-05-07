@@ -22,7 +22,7 @@ export class NavComponent implements OnInit {
     // Проверка на пользователя:
     if(sessionStorage.getItem('userID') !== null) {
       // Изменения при авторизации сюда
-        if(sessionStorage.getItem('userRole') === 'admin') {
+        if(sessionStorage.getItem('userRole') === '1') {
           this.usersPage = true;
           //console.log(sessionStorage.getItem('userRole'));
         } else {
@@ -34,7 +34,7 @@ export class NavComponent implements OnInit {
       // Первая строчка хранилище фейкового аватара, которая должна быть выше для реального запроса:  
       this.imgAvatar = sessionStorage.getItem('userAvatar');
 
-      this.userIconNav = true; // Замена на иконку, если без сервера
+      this.userIconNav = false; // Замена на иконку, если без сервера
     }
     //console.log(sessionStorage.getItem('userID') );
     //sessionStorage.clear();
@@ -42,9 +42,9 @@ export class NavComponent implements OnInit {
     // Для моментального обновления при авторизации:
     this.resolveService.userProfile$.subscribe(
       value => { 
-        if(value.data.user !== undefined) {
+        if(value !== undefined) {
           
-            if(value.data.user.role === 'admin') {
+            if(value.is_admin === '1') {
               this.usersPage = true;
               //console.log(value);
             }
