@@ -15,30 +15,32 @@ export class RegistrationComponent {
 
   constructor(private _http: RegistrationService) {}
   
-  addUser(form: NgForm) {
+  addUser(registrationForm: NgForm) {
     //console.log(form);
     //console.log(form.controls['email'].valid);
-
-    if (form.controls['name'].valid) {
+    
+    if (registrationForm.controls['name'].valid) {
       this.nameInvalid = false;
     } else {
       this.nameInvalid = true;
     }
 
-    if (form.controls['email'].valid) {
+    if (registrationForm.controls['email'].valid) {
       this.emailInvalid = false;
     } else {
       this.emailInvalid = true;
     }
     // Добавить продуманную валидацию для пароля
-    if (form.controls['password'].value === form.controls['repeatPassword'].value) {
+    if (registrationForm.controls['password'].value === registrationForm.controls['repeatPassword'].value) {
       this.repeatPasswordInvalid = false;
     } else {
       this.repeatPasswordInvalid = true;
     }
 
-    if (form.valid === true) {
-      return this._http.postData(form.value);
+    if (registrationForm.valid === true) {
+      return this._http.postData(registrationForm.value).subscribe(value => console.log(value));
+    } else {
+      return false;
     }
   }
 }
