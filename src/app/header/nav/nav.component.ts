@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, fromEvent } from 'rxjs';
 import { UserResolveService } from 'src/app/sign-in/user-resolve.service';
+import { NavService } from './nav.service';
 
 @Component({
   selector: 'app-nav',
@@ -15,7 +16,7 @@ export class NavComponent implements OnInit {
 
   public imgAvatar: any = '';
 
-  constructor (private readonly resolveService: UserResolveService) { }
+  constructor (private readonly resolveService: UserResolveService, private _data: NavService) { }
   
   ngOnInit() { // Надо будет рефакторинг устроить:
 
@@ -47,7 +48,7 @@ export class NavComponent implements OnInit {
           
             if(value.is_admin === 1) {
               this.usersPage = true;
-              console.log(value);
+              // console.log(value);
             }
           this.bannerShown = true;
           this.userIconNav = true;
@@ -69,8 +70,9 @@ export class NavComponent implements OnInit {
   }
 
   signOut() {
+    this._data.getLogout().subscribe(value => console.log(value));
     this.userIconNav = false;
     sessionStorage.clear();
-    // Команда при клике сбрасывает все стореджи и редиректит пользователя на главную
+    // Команда при клике удаялет токен по get запросу, сбрасывает все стореджи и редиректит пользователя на главную
   }
 }
