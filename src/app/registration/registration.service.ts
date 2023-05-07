@@ -18,6 +18,6 @@ export class RegistrationService {
 
     const body = {name: user.name, email: user.email, password: user.password};
 
-    return this._http.post('https://hasu.monster/register', body); // Заменить на передачу данных на сервер и добавить гарды 
+    return this._http.post('https://hasu.monster/api/register', body); // Заменить на передачу данных на сервер и добавить гарды 
   }
 }
