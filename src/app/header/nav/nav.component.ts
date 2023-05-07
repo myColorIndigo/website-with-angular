@@ -43,10 +43,11 @@ export class NavComponent implements OnInit {
     this.resolveService.userProfile$.subscribe(
       value => { 
         if(value !== undefined) {
+          this.usersPage = false;
           
-            if(value.is_admin === '1') {
+            if(value.is_admin === 1) {
               this.usersPage = true;
-              //console.log(value);
+              console.log(value);
             }
           this.bannerShown = true;
           this.userIconNav = true;
