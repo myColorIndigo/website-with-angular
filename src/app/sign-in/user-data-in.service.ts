@@ -14,11 +14,12 @@ export class UserDataInService {
 
   constructor(private _http: HttpClient, private router: Router, private readonly userResolveService: UserResolveService){ }
 
+  // Отправка данных авторизации, получение токена:
   postData(user: User) {
 
     const body = {email: user.email, password: user.password};
 
-    const tokenUser = this._http.post('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/auth/login', body);
+    const tokenUser = this._http.post('https://hasu.monster/api/login', body);
 
     tokenUser.subscribe({
       next: (statusToken) => {
@@ -29,12 +30,13 @@ export class UserDataInService {
     return tokenUser;
   }
   
+  // Отправка токена, получение всех данных юзера:
   getUser() {
     console.log(this.statusToken);
 
-    const tokenUser = 'Bearer ' + this.statusToken?.token;
+    const tokenUser = 'Bearer ' + this.statusToken?.data.token;
 
-    const getProfileUser = this._http.get('http://learn-golang.eu-central-1.elasticbeanstalk.com/api/users/me', { headers: new HttpHeaders({ 'Authorization': tokenUser })})
+    const getProfileUser = this._http.get('https://hasu.monster/api/user', { headers: new HttpHeaders({ 'Authorization': tokenUser })})
     
     return getProfileUser.subscribe( tokenDataProfile => {
       this.tokenDataProfile = tokenDataProfile;
@@ -42,15 +44,16 @@ export class UserDataInService {
     });
   }
   
+  // Запись данных в хранилище, отключение гардов, смена страницы, передача данных в resolve сервис:
   resolveProfileAndToken() {
     console.log(this.tokenDataProfile); // Возможно раздробить код ниже на конкретные функции 
     
-    sessionStorage.setItem('userName', this.tokenDataProfile.data.user.name);
-    sessionStorage.setItem('userRole', this.tokenDataProfile.data.user.role);
-    sessionStorage.setItem('userEmail', this.tokenDataProfile.data.user.email);
-    sessionStorage.setItem('userID', this.tokenDataProfile.data.user.id);
-    if (this.tokenDataProfile.data.user.role === 'admin') { // Возможно не стоит этот токен админа передавать в сторейдж
-      sessionStorage.setItem('adminToken', this.statusToken.token);
+    sessionStorage.setItem('userName', this.tokenDataProfile.name);
+    sessionStorage.setItem('userRole', this.tokenDataProfile.is_admin);
+    sessionStorage.setItem('userEmail', this.tokenDataProfile.email);
+    sessionStorage.setItem('userID', this.tokenDataProfile.id);
+    if (this.tokenDataProfile.is_admin === 1) { // Возможно не стоит этот токен админа передавать в сторейдж
+      sessionStorage.setItem('adminToken', this.statusToken.data.token);
     }
     this.guardUser();
     this.guardAdmin();
@@ -88,7 +91,7 @@ export class UserDataInService {
   }
 
   guardAdmin() {
-    if (sessionStorage.getItem('userRole') === 'admin') {
+    if (sessionStorage.getItem('userRole') === '1') {
       return true;
     }
     this.router.navigate(['sign-in']);
