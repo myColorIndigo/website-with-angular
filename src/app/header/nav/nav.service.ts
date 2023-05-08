@@ -15,8 +15,9 @@ export class NavService {
     let tokenUser = '';
 
     this.resolveService.token$.subscribe( value => tokenUser = 'Bearer ' + value.data.token);
-
-    // console.log(tokenUser);
+    
+    tokenUser = 'Bearer ' + sessionStorage.getItem('userToken');
+    //console.log(tokenUser);
 
     return this._http.get('https://hasu.monster/api/logout', { headers: new HttpHeaders({ 'Authorization': tokenUser })})
   }
