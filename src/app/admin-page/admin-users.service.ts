@@ -18,7 +18,7 @@ export class AdminUsersService {
     
     if (sessionStorage.getItem('userRole') === '1') {
       //console.log(sessionStorage.getItem('adminToken'));
-      tokenUser = 'Bearer ' + sessionStorage.getItem('adminToken');
+      tokenUser = 'Bearer ' + sessionStorage.getItem('userToken');
     }
 
     return this._http.get<any>('https://hasu.monster/api/users', { headers: new HttpHeaders({ 'Authorization': tokenUser })});

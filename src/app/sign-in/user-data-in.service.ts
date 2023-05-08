@@ -54,9 +54,14 @@ export class UserDataInService {
     sessionStorage.setItem('userEmail', this.tokenDataProfile.email);
     sessionStorage.setItem('userID', this.tokenDataProfile.id);
     sessionStorage.setItem('userAvatar', this.tokenDataProfile.avatar);
-    if (this.tokenDataProfile.is_admin === 1) { // Возможно не стоит этот токен админа передавать в сторейдж
+    sessionStorage.setItem('userToken', this.statusToken.data.token);
+    /*
+    if (this.tokenDataProfile.is_admin === 1) { // Возможно не стоит этот токен админа передавать в сторейдж, а если стоит, то мб сделать просто token а не деление на разных 
       sessionStorage.setItem('adminToken', this.statusToken.data.token);
+    } else {
+      console.log(sessionStorage.getItem('userToken'));
     }
+    */
     this.guardUser();
     this.guardAdmin();
 
