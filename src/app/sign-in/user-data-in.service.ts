@@ -48,10 +48,12 @@ export class UserDataInService {
   resolveProfileAndToken() {
     console.log(this.tokenDataProfile); // Возможно раздробить код ниже на конкретные функции 
     
+    // !!!Добавить внесение аватара в хранилище и далее распределить его по компонентам (и возможно прописать нейтральный аватар для незареганых юзеров)
     sessionStorage.setItem('userName', this.tokenDataProfile.name);
     sessionStorage.setItem('userRole', this.tokenDataProfile.is_admin);
     sessionStorage.setItem('userEmail', this.tokenDataProfile.email);
     sessionStorage.setItem('userID', this.tokenDataProfile.id);
+    sessionStorage.setItem('userAvatar', this.tokenDataProfile.avatar);
     if (this.tokenDataProfile.is_admin === 1) { // Возможно не стоит этот токен админа передавать в сторейдж
       sessionStorage.setItem('adminToken', this.statusToken.data.token);
     }
@@ -62,16 +64,6 @@ export class UserDataInService {
   
     return this.userResolveService.takeDataProfile(this.tokenDataProfile), this.userResolveService.tokenUser(this.statusToken);
   };
-
-  // Функция для запроса фейкового аватара:
-  takeAvatar() {
-    let dataAvatar: any = [];
-    this._http.get('https://jsonplaceholder.typicode.com/photos/3').subscribe(value => { // Для изменения аватара юзера можно поменять последнюю цифру url запроса
-      dataAvatar = value;
-      console.log(dataAvatar.thumbnailUrl);
-      sessionStorage.setItem('userAvatar', dataAvatar.thumbnailUrl);
-    });
-  }
 
   // Гарды:
   guardUser() {
