@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, fromEvent } from 'rxjs';
+import { fromEvent } from 'rxjs';
 import { UserResolveService } from 'src/app/sign-in/user-resolve.service';
 import { NavService } from './nav.service';
 
@@ -23,17 +23,17 @@ export class NavComponent implements OnInit {
     // Проверка на пользователя:
     if(sessionStorage.getItem('userID') !== null) {
       // Изменения при авторизации сюда
-        if(sessionStorage.getItem('userRole') === '1') {
-          this.usersPage = true;
-          //console.log(sessionStorage.getItem('userRole'));
-        } else {
-          this.usersPage = false;
-        }
+      if(sessionStorage.getItem('userRole') === '1') {
+        this.usersPage = true;
+        //console.log(sessionStorage.getItem('userRole'));
+      } else {
+        this.usersPage = false;
+      }
 
+      this.imgAvatar = sessionStorage.getItem('userAvatar');
       this.userIconNav = true;
     } else {
       // Первая строчка хранилище фейкового аватара, которая должна быть выше для реального запроса:  
-      this.imgAvatar = sessionStorage.getItem('userAvatar');
 
       this.userIconNav = false; // Замена на иконку, если без сервера
     }
@@ -50,6 +50,7 @@ export class NavComponent implements OnInit {
               this.usersPage = true;
               // console.log(value);
             }
+          this.imgAvatar = value.avatar;
           this.bannerShown = true;
           this.userIconNav = true;
         } 
