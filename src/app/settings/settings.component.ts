@@ -12,6 +12,7 @@ export class SettingsComponent implements OnInit {
 
   public imgAvatarUrl: any = '';
   public imgAvatar: any = '';
+  public userEmail: any = '';
 
   constructor(private _data: SettingsService) {}
 
@@ -55,6 +56,7 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() { // Получение фейкового аватара из хранилища:
     this.imgAvatarUrl = sessionStorage.getItem('userAvatar');
+    this.userEmail = sessionStorage.getItem('userEmail');
 
     this.dropboxAvatar();
   }
