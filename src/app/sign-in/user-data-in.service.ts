@@ -32,7 +32,7 @@ export class UserDataInService {
   
   // Отправка токена, получение всех данных юзера:
   getUser() {
-    console.log(this.statusToken);
+    // console.log(this.statusToken);
 
     const tokenUser = 'Bearer ' + this.statusToken?.data.token;
 
@@ -46,7 +46,7 @@ export class UserDataInService {
   
   // Запись данных в хранилище, отключение гардов, смена страницы, передача данных в resolve сервис:
   resolveProfileAndToken() {
-    console.log(this.tokenDataProfile); // Возможно раздробить код ниже на конкретные функции 
+    // console.log(this.tokenDataProfile); // Возможно раздробить код ниже на конкретные функции 
     
     // !!!Добавить внесение аватара в хранилище и далее распределить его по компонентам (и возможно прописать нейтральный аватар для незареганых юзеров)
     sessionStorage.setItem('userName', this.tokenDataProfile.name);
@@ -72,7 +72,7 @@ export class UserDataInService {
 
   // Гарды:
   guardUser() {
-    if (sessionStorage.getItem('userID') !== null) {
+    if (sessionStorage.getItem('userToken') !== null) { // Раньше был userID, поменял из-за отсутствия его при регистрации
       return true;
     }
     this.router.navigate(['sign-in']);
@@ -80,7 +80,7 @@ export class UserDataInService {
   }
 
   guardSignIn() {
-    if (sessionStorage.getItem('userID') !== null) {
+    if (sessionStorage.getItem('userToken') !== null) {
       this.router.navigate(['']);
       return false;
     }

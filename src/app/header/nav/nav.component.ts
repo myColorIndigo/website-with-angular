@@ -21,7 +21,7 @@ export class NavComponent implements OnInit {
   ngOnInit() { // Надо будет рефакторинг устроить:
 
     // Проверка на пользователя:
-    if(sessionStorage.getItem('userID') !== null) {
+    if(sessionStorage.getItem('userToken') !== null) {
       // Изменения при авторизации сюда
       if(sessionStorage.getItem('userRole') === '1') {
         this.usersPage = true;
@@ -46,11 +46,17 @@ export class NavComponent implements OnInit {
         if(value !== undefined) {
           this.usersPage = false;
           
-            if(value.is_admin === 1) {
-              this.usersPage = true;
-              // console.log(value);
-            }
-          this.imgAvatar = value.avatar;
+          if(value.is_admin === 1) {
+            this.usersPage = true;
+            // console.log(value);
+          }
+          
+          if (value.avatar !== undefined) {
+            this.imgAvatar = value.avatar;
+          } else {
+            this.imgAvatar = 'https://robohash.org/64264728ed40ba12d1fdee420f285261?set=set4&bgset=&size=200x200'; // Заменяет аватар на рандомный для нового юзера
+            sessionStorage.setItem('userAvatar', 'https://robohash.org/64264728ed40ba12d1fdee420f285261?set=set4&bgset=&size=200x200'); // Записывает рандомный аватар для нового или не выбравшего аватар юзера
+          }
           this.bannerShown = true;
           this.userIconNav = true;
         } 
