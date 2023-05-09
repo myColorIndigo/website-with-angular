@@ -38,7 +38,7 @@ export class RegistrationComponent {
     }
 
     if (registrationForm.valid === true) {
-      return this._http.postData(registrationForm.value).subscribe(value => console.log(value));
+      return this._http.postData(registrationForm.value);
     } else {
       return false;
     }

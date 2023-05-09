@@ -21,7 +21,7 @@ export class RegistrationService {
     const body = {name: user.name, email: user.email, password: user.password};
 
     return this._http.post('https://hasu.monster/api/register', body).subscribe(value => {
-      console.log(value);
+      // console.log(value);
       this.userStorage(body, value);
     }); // Заменить на передачу данных на сервер и добавить гарды 
   }
@@ -32,17 +32,21 @@ export class RegistrationService {
     sessionStorage.setItem('userEmail', userData.email);
     sessionStorage.setItem('userToken', serverData.token);
 
-    console.log(sessionStorage);
+    // console.log(sessionStorage);
     
-    this.guardUser();
+    this.guardRegistration(); // Возможно эта строчка как и те, что в sign-in лишние 
 
     this.router.navigate(['']);
 
     return this.userResolveService.takeDataProfile(userData);
   }
 
-  // Гарды юзера при регистрации:
-  guardUser() {
-    
+  // Гард зарегестрированного юзера:
+  guardRegistration() {
+    if (sessionStorage.getItem('userToken') !== null) {
+      this.router.navigate(['']);
+      return false;
+    }
+    return true;
   }
 }
