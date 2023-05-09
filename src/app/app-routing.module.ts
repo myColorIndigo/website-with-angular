@@ -16,7 +16,9 @@ import { AddServerCardComponent } from './main/server-card/add-server-card/add-s
 
 const routes: Routes = [ // Гарды должны нормально редаректить на главную
   { path: '', component: MainComponent },
-  { path: 'registration', component: RegistrationComponent },
+  { path: 'registration',
+    canActivate: [SignInGuard],
+    component: RegistrationComponent },
   
   { path: 'sign-in',
     canActivate: [SignInGuard],
