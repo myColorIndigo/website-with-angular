@@ -28,6 +28,7 @@ module.exports = {
       },
       backgroundImage: {
         'de_dust2': "url('app/de_dust2_logo.png')",
+        'linemap': "url('https://cdn.akamai.steamstatic.com/apps/csgo/images/csgo_react/textures/linemap-20.png')",
       },
       animation: {
         'dropdownMenuIn': 'dropdownMenuIn ease-out 0.2s',
