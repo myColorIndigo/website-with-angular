@@ -1,5 +1,10 @@
-<div class="ml-auto flex items-center bg-linemap bg-gray-600 bg-left bg-repeat bg-[length:400px_400px] py-1">
-    <!-- Переделать стили навигации под тематику -->
+<div class="ml-auto flex items-center bg-linemap bg-gray-600 bg-left bg-repeat bg-[length:350px_350px] py-1">
+    <!-- Переделать стили навигации под тематику:
+          -Сделать сетку как на пикчах игры:
+            -Для выбора авторизации и регистрации;
+            -Для следующего блока снизу (например для хедера);
+          -Возможно стоит исправить задний фон рисунка (или обрезать пикчу по краям, либо поставить легкую анимацию);
+    -->
     <!-- Logo -->
     <div class="ml-4 flex">
       <a routerLink="">
@@ -10,9 +15,9 @@
     
     <!-- Sign-in and Registration -->
     <div *ngIf="!userIconNav" class="hidden xs:flex xs:flex-1 xs:items-center xs:justify-end xs:space-x-6">
-      <a routerLink="sign-in" class="text-sm font-medium text-gray-50 hover:text-gray-400">Sign in</a>
+      <a routerLink="sign-in" class="text-sm font-medium text-gray-50 hover:text-blue-300 focus:text-blue-400">Sign in</a>
       <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
-      <a routerLink="registration" class="text-sm font-medium text-gray-50 hover:text-gray-400">Create account</a>
+      <a routerLink="registration" class="text-sm font-medium text-gray-50 hover:text-blue-300 focus:text-blue-400">Create account</a>
     </div>
 
     <!-- Profile dropdown -->
@@ -35,19 +40,19 @@
             From: "transform opacity-100 scale-100"
             To: "transform opacity-0 scale-95"
         -->
-        <div *ngIf="isShown" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+        <div *ngIf="isShown" class="absolute right-0 z-10 mt-2 w-44 origin-top-right rounded-md bg-gray-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
           <!-- Active: "bg-gray-100", Not Active: "" -->
-          <a *ngIf="usersPage" routerLink="admin-page" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Users</a>
-          <a routerLink="profile" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Your Profile</a>
-          <a routerLink="settings" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Settings</a>
-          <a routerLink="" (click)="signOut()" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-3">Sign out</a>
+          <a *ngIf="usersPage" routerLink="admin-page" class="block px-4 py-2 text-sm text-gray-100 hover:text-blue-300 focus:text-blue-400" role="menuitem" tabindex="-1" id="user-menu-item-0">Users</a>
+          <a routerLink="profile" class="block px-4 py-2 text-sm text-gray-100 hover:text-blue-300 focus:text-blue-400" role="menuitem" tabindex="-1" id="user-menu-item-1">Your Profile</a>
+          <a routerLink="settings" class="block px-4 py-2 text-sm text-gray-100 hover:text-blue-300 focus:text-blue-400" role="menuitem" tabindex="-1" id="user-menu-item-2">Settings</a>
+          <a routerLink="" (click)="signOut()" class="block px-4 py-2 text-sm text-gray-100 hover:text-blue-300 focus:text-blue-400" role="menuitem" tabindex="-1" id="user-menu-item-3">Sign out</a>
         </div>
       </div>
     </div>
     
     <!-- Search -->
     <div class="flex xs:ml-6 pr-1">
-      <a routerLink="in-work" class="p-2 text-gray-100 hover:text-gray-400">
+      <a routerLink="in-work" class="p-2 text-gray-100 hover:text-blue-300 focus:text-blue-400">
         <span class="sr-only">Search</span>
         <!-- Heroicon name: outline/magnifying-glass -->
         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
