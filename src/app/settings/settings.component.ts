@@ -9,7 +9,7 @@ import { SettingsService } from './settings.service';
 })
 export class SettingsComponent implements OnInit {
   // Сделать функционал замены аватарки, отправку данных на сервер и возможно моментальную замену в хранилище
-
+  // Обязательно добавить функцию удаления аккаунта
   public imgAvatarUrl: any = '';
   public imgAvatar: any = '';
   public userEmail: any = '';
