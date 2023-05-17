@@ -3,10 +3,12 @@
   <div class="flex flex-row flex-nowrap justify-around">
     <div *ngFor="let server of servers">
       <a [routerLink]="['server', server.id]">
-        <div class="bg-white px-4 py-5 grid grid-cols-3 grid-rows-2 gap-3 border-4 border-dline-orange drop-shadow-lg shadow-lline-orange">
-          <div class="text-lg font-bold text-gray-700 col-span-3">{{server.name}}</div>
-          <div class="text-base text-gray-900 col-span-1">online: {{server.online}}</div>
-          <div class="text-base text-gray-900 col-span-1">map: {{server.map}}</div>
+        <div class="bg-white px-4 py-5 grid grid-cols-4 grid-rows-2 gap-3 rounded border-4 border-dline-orange drop-shadow-lg shadow-lline-orange">
+          <div class="text-lg font-bold text-center text-gray-700 col-span-2">{{server.name}}</div>
+          <div class="text-lg font-bold text-center text-gray-700 col-span-2">popularity: {{server.popularity}}</div>
+          <div class="text-base text-center text-gray-900 col-span-1">online: {{server.online}}</div>
+          <div class="text-base text-center text-gray-900 col-span-1">map: {{server.map}}</div>
+          <div class="text-base text-center text-gray-900 col-span-2">location: {{server.location}}</div>
         </div>
       </a>
     </div>
