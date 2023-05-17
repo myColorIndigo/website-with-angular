@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ServersInfoService } from '../main/servers-info.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
-  public infoServer: string = 'Some popular server';
+  public servers: any = [];
 
-  constructor() {}
+  constructor(private _servers: ServersInfoService) {}
 
+  ngOnInit() {
+    this.servers = this._servers.getServers();
+  }
 }
