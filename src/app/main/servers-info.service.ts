@@ -21,7 +21,8 @@ export class ServersInfoService {
         "upTime": 100,
         "rang": 1,
         "globalRang": 3,
-        "site": "none"
+        "site": "none",
+        "popularity": 4
     },
     {
         "name": "CS2 RETAKE #3",
@@ -38,7 +39,8 @@ export class ServersInfoService {
         "upTime": 100,
         "rang": 1,
         "globalRang": 3,
-        "site": "none"
+        "site": "none",
+        "popularity": 4
     },
     {
         "name": "CS2 DM #1",
@@ -55,7 +57,8 @@ export class ServersInfoService {
         "upTime": 100,
         "rang": 23,
         "globalRang": 42,
-        "site": "none"
+        "site": "none",
+        "popularity": 5
     }
 
 ];
